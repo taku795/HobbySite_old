@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="485636287764-buq3prhqbqldmgigcsjmcg7p4ct4jl30.apps.googleusercontent.com">
+    <title>Document</title>
+</head>
+<body>
+<form action='login/login.php' method='post'>
+<p>ログインID<input type='text' name='Login_ID'></p>
+<p>パスワード<input type='text' name='Login_Password'></p>
+<p><input type='submit' value='ログイン'></p>
+</form>
+
+<!-- Googleログインボタン -->
+<div class="g-signin2" data-onsuccess="onSignIn" onclick="onClick()"></div>
+<!-- ログインボタンが押されて、ログインに成功したら画面遷移 -->
+<script>
+  var clicked=false;
+  function onClick()
+  {
+    clicked=true;
+  }
+  function onSignIn(googleUser) {
+      if (clicked) {
+        location.href = "http://localhost/home.php";
+      }
+  };
+</script>
+
+<a href="login/new_page.php">新規登録</a>
+</body>
+</html>
