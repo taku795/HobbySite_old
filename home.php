@@ -1,3 +1,4 @@
+
 <?php require "header.php"; ?>
 
 <h1>趣味旅行</h1>
