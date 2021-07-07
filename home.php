@@ -3,6 +3,10 @@
 <h1>趣味旅行</h1>
 <a href="menyu/menyu_page.php"><h2>メニュー</h2></a>
 <a href="post/post_page.php"><h2>記事投稿</h2></a>
+<form action="search/search.php">
+<p>キーワード検索：<input type="text" name='key_word'>
+<input type="submit" value='検索'></p>
+</form>
 <h2>掲示板</h2>
 <?php $pdo=new PDO('mysql:host=localhost;dbname=board;charset=utf8',
 'staff','password');
