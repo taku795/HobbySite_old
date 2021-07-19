@@ -9,8 +9,13 @@
 <input type="submit" value='検索'></p>
 </form>
 <h2>掲示板</h2>
-<?php $pdo=new PDO('mysql:host=localhost;dbname=board;charset=utf8',
-'staff','password');
+<?php 
+try{
+    $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
+  'b0e1b2175788a4','46b12765');
+  }catch(PDOException $e){
+    print('DB接続エラー:'.$e->getMessage());
+  }
 foreach($sql=$pdo->query('select * from thread') as $row ) {
     echo "<a href='board/board.php?thread_id=$row[id]'>$row[title]</a>";
     echo '<br>';
@@ -19,8 +24,12 @@ foreach($sql=$pdo->query('select * from thread') as $row ) {
 <h2>記事</h2>
 <?php
 //データベースに接続、記事内容を新しい順に取得して表示
-$pdo=new PDO('mysql:host=localhost;dbname=board;charset=utf8',
-'staff','password');
+try{
+    $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
+  'b0e1b2175788a4','46b12765');
+  }catch(PDOException $e){
+    print('DB接続エラー:'.$e->getMessage());
+  }
 session_start();
 
 foreach($sql=$pdo->query('select * from content') as $row ) {

@@ -3,8 +3,12 @@
 <h1>検索結果</h1>
 
 <?php
-$pdo=new PDO('mysql:host=localhost;dbname=board;charset=utf8',
-'staff','password');
+try{
+    $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
+  'b0e1b2175788a4','46b12765');
+  }catch(PDOException $e){
+    print('DB接続エラー:'.$e->getMessage());
+  }
 
 $sql=$pdo->prepare("select * from content where Title or content like ?");
 $sql->execute(["%$_REQUEST[key_word]%"]);
