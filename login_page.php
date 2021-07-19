@@ -51,7 +51,7 @@ if ($_GET['wrong']) {
       if (clicked) {
         var profile = googleUser.getBasicProfile();
         var gmail=profile.getEmail();
-        var url='http://localhost/login/request.php?mail='+gmail;
+        var url='https://taku777.herokuapp.com/login/request.php?mail='+gmail;
 
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url);
