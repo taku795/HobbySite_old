@@ -37,9 +37,11 @@ if ($password_wrong>=1 || $ID_miss>=1) {
 
 
 //IDを受け取りsqlを用意して登録
-$sql=$pdo->prepare("insert into users values(?,?,DEFAULT)");
+$sql=$pdo->prepare("insert into users values(?,?,DEFAULT,DEFAULT)");
 if($sql->execute([$_REQUEST['new_user_id'],$_REQUEST['new_user_password']])) {
     echo '<p>登録完了です</p>';
+} else {
+    echo '<p>登録できませんでした</p>';
 }
 
 ?>
