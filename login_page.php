@@ -54,6 +54,12 @@ if ($_GET['wrong']) {
 <p>ログインIDとGoogleアカウントを連携されている方のみ利用できます</p>
 <div class="g-signin2" data-onsuccess="onSignIn" onclick="onClick()"></div>
 
+<form action="login/login.php" method="psot">
+  <input type="hidden" name="Login_ID" value="test">
+  <input type="hidden" name="Login_Password" value="test">
+  <input type="submit" value="テストユーザーとしてログイン">
+</form>
+
 <!-- ログインボタンが押されて、ログインに成功したら画面遷移 -->
 <script>
   var clicked=false;
