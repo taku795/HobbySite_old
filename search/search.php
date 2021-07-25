@@ -19,7 +19,7 @@ foreach ($sql->fetchAll() as $row) {
         }
     }
     echo 
-    "<form name='form$row[id]' action='content/content_page.php?content_name=$content_name&title=$row[Title]&day=$row[Day]' method='post'>
+    "<form name='form$row[id]' action='../content/content_page.php?content_name=$content_name&title=$row[Title]&day=$row[Day]' method='post'>
     <input type='hidden' name='content' value='$row[Content]'>
     <a href='javascript:form$row[id].submit()'>$content_name-$row[Title]-$row[Content]-$row[Day]</a>
     </form>";

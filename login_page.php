@@ -12,6 +12,20 @@ session_start();
 $_SESSION['user_mail']=null;
 $_SESSION['user_name']=null;
 $_SESSION['login_id']=null;
+
+try{
+  $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
+'b0e1b2175788a4','46b12765');
+}catch(PDOException $e){
+  print('DB接続エラー:'.$e->getMessage());
+}
+
+//テストユーザーのアカウント、投稿内容を消去
+$pdo->query("DELETE FROM content WHERE Login_ID='test'");
+$pdo->query("DELETE FROM users WHERE Login_ID='test'");
+//再度テストユーザーを追加
+$pdo->query("INSERT INTO users VALUES('test','test',default,default)");
+
 ?>
 
 <!-- 通常ログイン -->

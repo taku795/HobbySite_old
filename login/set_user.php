@@ -47,6 +47,6 @@ if($sql->execute([$_REQUEST['new_user_id'],$_REQUEST['new_user_password']])) {
 ?>
 
 <!-- 登録完了後ログイン画面に飛ばす -->
-<a href="../login_page.html">ログインページへ</a>
+<a href="../login_page.php">ログインページへ</a>
 
 <?php require "../footer.php"; ?>
