@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="485636287764-buq3prhqbqldmgigcsjmcg7p4ct4jl30.apps.googleusercontent.com">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/login_page.css">
+    <title>ログインページ</title>
 </head>
 <body>
 <?php
@@ -25,40 +26,48 @@ $pdo->query("DELETE FROM content WHERE Login_ID='test'");
 $pdo->query("DELETE FROM users WHERE Login_ID='test'");
 //再度テストユーザーを追加
 $pdo->query("INSERT INTO users VALUES('test','test',default,default)");
-
 ?>
 
-<!-- 通常ログイン -->
-<form action='login/login.php' method='post'>
-<p>ログインID<input type='text' name='Login_ID'></p>
-<?php
-if ($_GET['no_id']) {
-  echo '<p>入力されていません</p>';
-}
-?>
+<section class="loginform">
+  <!-- 通常ログイン -->
+  <form class="nomal_login" action='login/login.php' method='post'>
+    <p>ログインID：<input class="text" type='text' name='Login_ID'></p>
+    <?php
+    if ($_GET['no_id']) {
+      echo '<p>入力されていません</p>';
+    }
+    ?>
+    <p>パスワード：<input class="text" type='text' name='Login_Password'></p>
+    <?php
+    if ($_GET['no_password']) {
+      echo '<p>入力されていません</p>';
+    }
 
-<p>パスワード<input type='text' name='Login_Password'></p>
-<?php
-if ($_GET['no_password']) {
-  echo '<p>入力されていません</p>';
-}
+    if ($_GET['wrong']) {  
+      echo '<p>パスワードかIDが間違っています</p>';
+    }
+    ?>
+    <input class="nomal_button" type='submit' value='ログイン'>
+  </form>
 
-if ($_GET['wrong']) {  
-  echo '<p>パスワードかIDが間違っています</p>';
-}
-?>
-<p><input type='submit' value='ログイン'></p>
-</form>
+  <div class="new_test_login">
+    <form action="login/login.php" method="psot">
+      <input type="hidden" name="Login_ID" value="test">
+      <input type="hidden" name="Login_Password" value="test">
+      <input class="test_button" type="submit" value="テストユーザーとしてログイン">
+    </form>
+    <div class="new_set">
+      <a href="login/new_page.php">新規登録</a>
+    </div>
+  </div>
 
-<!-- Googleログインボタン -->
-<p>ログインIDとGoogleアカウントを連携されている方のみ利用できます</p>
-<div class="g-signin2" data-onsuccess="onSignIn" onclick="onClick()"></div>
+  <!-- Googleログインボタン -->
+  <div class="google_login">
+    <p>↓ログインIDとGoogleアカウントを連携されている方のみ利用できます</p>
+    <div class="g-signin2" data-onsuccess="onSignIn" onclick="onClick()"></div>
+  </div>
 
-<form action="login/login.php" method="psot">
-  <input type="hidden" name="Login_ID" value="test">
-  <input type="hidden" name="Login_Password" value="test">
-  <input type="submit" value="テストユーザーとしてログイン">
-</form>
+</section>
 
 <!-- ログインボタンが押されて、ログインに成功したら画面遷移 -->
 <script>
@@ -88,7 +97,5 @@ if ($_GET['wrong']) {
       }
     }
 </script>
-
-<a href="login/new_page.php">新規登録</a>
 </body>
 </html>

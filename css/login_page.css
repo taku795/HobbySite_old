@@ -1,0 +1,55 @@
+@charset "utf-8";
+/*----------------------------------
+
+・
+
+----------------------------------*/
+@import "layout.css";
+/* 通常ログインフォーム */
+.loginform {
+    border-radius: 10px;
+    border: solid 5px rgb(122, 134, 50);
+    width: 50%;
+    margin: auto;
+    margin-top: 10%;
+    padding: 10px;
+}
+
+.nomal_login {
+    text-align: center;
+}
+.nomal_login text {
+    height: 20px;
+}
+.nomal_login p {
+    margin: 5px;;
+}
+.nomal_button {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+}
+
+.new_test_login form,.new_set {
+    display: inline-block;
+}
+.new_test_login {
+    margin-left: 10%;
+}
+.new_set {
+    margin-left: 10%;
+}
+.new_test_login {
+    margin: 10px;
+    width: 470px;
+    text-align: center;
+}
+.test_button {
+    height: 40px;
+}
+
+
+/* グーグルログインフォーム */
+.google_login p {
+    font-size: small;
+}
