@@ -33,7 +33,7 @@
 .new_test_login form,.new_set {
     display: inline-block;
 }
-.new_test_login {
+.new_test_login form {
     margin-left: 10%;
 }
 .new_set {
