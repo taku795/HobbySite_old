@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (empty($_REQUEST['name'])) {
+  $_REQUEST['name']=$_SESSION['user_name'];
+}
+
 //投稿内容があった時データベースに登録
 if (!empty($_REQUEST['message'])) {
     try{
