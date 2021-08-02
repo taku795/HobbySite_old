@@ -54,7 +54,7 @@ $pdo->query("INSERT INTO users VALUES('test','test',default,default)");
     <form action="login/login.php" method="psot">
       <input type="hidden" name="Login_ID" value="test">
       <input type="hidden" name="Login_Password" value="test">
-      <input class="test_button" type="submit" value="テストユーザーとしてログイン">
+      <input class="test_button" type="submit" value="テストユーザーとしてログイン*">
     </form>
     <div class="new_set">
       <a href="login/new_page.php">新規登録</a>
@@ -66,8 +66,11 @@ $pdo->query("INSERT INTO users VALUES('test','test',default,default)");
     <p>↓ログインIDとGoogleアカウントを連携されている方のみ利用できます</p>
     <div class="g-signin2" data-onsuccess="onSignIn" onclick="onClick()"></div>
   </div>
-
 </section>
+<div class="memo">
+  <p>*テストユーザーとして新規登録をせずにログインすることができます</p>
+</div>
+
 
 <!-- ログインボタンが押されて、ログインに成功したら画面遷移 -->
 <script>

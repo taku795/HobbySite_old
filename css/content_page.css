@@ -1,0 +1,18 @@
+@charset "utf-8";
+/*----------------------------------
+
+
+
+----------------------------------*/
+
+@import "layout.css";
+
+h2 {
+    padding: 20px;
+}
+.content {
+    white-space: pre-wrap;
+}
+.article p {
+    margin: 10px;
+}

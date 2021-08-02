@@ -1,0 +1,25 @@
+@charset "utf-8";
+/*----------------------------------
+
+
+
+----------------------------------*/
+
+@import "layout.css";
+
+h2 {
+    padding: 20px;
+}
+.header p {
+    padding-left: 20px;
+}
+.post_form,.title_form,.content_form {
+    margin: 10px;
+}
+textarea {
+    width: 100%;
+    resize: none;
+}
+.title_form input {
+    width: 60%;
+}
