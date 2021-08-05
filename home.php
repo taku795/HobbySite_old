@@ -58,8 +58,7 @@
         echo 
         "
         <article>
-        <form name='form$row[id]' target='_brank' action='content/content_page.php?content_name=$content_name&title=$row[Title]&day=$row[Day]' method='post'>
-        <input type='hidden' name='content' value='$row[Content]'>
+        <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
         <a href='javascript:form$row[id].submit()'>
         <p>記事タイトル：$row[Title]</p>
         <p>$row[Content]</p>
