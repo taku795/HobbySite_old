@@ -20,6 +20,11 @@
         </form>
     </section>
 
+    <section>
+      <p>いいねした記事を表示する</p>
+      <a href="content/good_content_page.php">こちら</a>
+    </section>
+    
     <section class="board">
       <h2>趣味の語り場</h2>
       <p>興味のある趣味について語り合おう！</p>
