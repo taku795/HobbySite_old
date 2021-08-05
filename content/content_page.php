@@ -43,7 +43,7 @@
     //ページ読み込みの時
     $.ajax({
         type: 'post',
-        url: "http://localhost/content/good.php",
+        url: "https://taku777.herokuapp.com/content/good.php",
         data: {"Content_ID": Content_ID},
         success: function(result){
             var arr = JSON.parse(result);
@@ -60,7 +60,7 @@
     function onClick() {
         $.ajax({
             type: 'post',
-            url: "http://localhost/content/good.php?click=1",
+            url: "https://taku777.herokuapp.com/content/good.php?click=1",
             data: {"Content_ID": Content_ID},
             success: function(result){
                 var arr = JSON.parse(result);
