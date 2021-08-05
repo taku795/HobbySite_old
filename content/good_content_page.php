@@ -25,8 +25,8 @@
         $sql->execute([$result[$number]['Content_ID']]);
         $content = $sql->fetchAll(PDO::FETCH_BOTH);
         $id=$content[0]['id'];
-        $title=$content[0][Title];
-        $buf=$content[0][Content];
+        $title=$content[0]['Title'];
+        $buf=$content[0]['Content'];
         echo 
           "
           <article>
