@@ -7,12 +7,8 @@
 
 @import "layout.css";
 
-h2 {
+h3 {
     padding: 20px;
-}
-.content p {
-    white-space: pre-wrap;
-}
-.article p {
-    margin: 10px;
+    text-align: center;
+    font-size: 35px;
 }

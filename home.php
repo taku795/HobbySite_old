@@ -23,8 +23,10 @@
     <section>
       <p>いいねした記事を表示する</p>
       <a href="content/good_content_page.php">こちら</a>
+      <p>フォローしている人の記事一覧を表示</p>
+      <a href="account/follow_user.php">こちら</a>
     </section>
-    
+
     <section class="board">
       <h2>趣味の語り場</h2>
       <p>興味のある趣味について語り合おう！</p>
@@ -55,11 +57,6 @@
     session_start();
 
     foreach($sql=$pdo->query('select * from content') as $row ) {
-        foreach($sql=$pdo->query('select * from users') as $row2 ) {
-            if ($row['Login_ID']==$row2['Login_ID']) {
-                $content_name=$row2['User_Name'];
-            }
-        }
         echo 
         "
         <article>
@@ -74,6 +71,10 @@
     }
     ?>
   </section>
+
+  <footer>
+    <h1>あなたの人生が<br>より楽しいものになりますように</h1>
+  </footer>
   
 </body>
 </html>

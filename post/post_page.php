@@ -2,7 +2,7 @@
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/post_page.css?v=2">
+    <link rel="stylesheet" href="../css/post_page.css">
     <title>記事投稿画面</title>
 </head>
 <body>
@@ -30,6 +30,8 @@
             <input type='submit' value='投稿する'>
         </div>
     </form>
+
+    <a class="home_link" href="../home.php">ホーム画面へ</a>
 
 </body>
 </html>

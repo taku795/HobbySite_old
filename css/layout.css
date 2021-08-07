@@ -31,3 +31,11 @@ h1 {
 h2 {
     color: #c3ab4c;
 }
+h3 {
+    color: rgb(166, 177, 19);
+}
+.home_link {
+    display: block;
+    text-align: center;
+    margin: 20px;
+}

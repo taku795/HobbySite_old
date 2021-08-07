@@ -10,28 +10,8 @@
 h2 {
     padding: 20px;
 }
-h3 {
-    padding: 20px;
-}
-
-/* ログイン者のみがみれる個人情報一覧 */
-.menyupage {
-    text-align: center;
-}
-.loginID {
-    width: 329px;
-    margin: auto;
-    text-align: left;
-}
-.loginID,.name,.mail {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-/* 記事レイアウト */
 .articles {
     margin: 10px;
-    height: 500px;
 }
 .articles article {
     border: solid 1px rgb(185, 218, 41);

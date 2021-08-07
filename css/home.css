@@ -45,6 +45,7 @@
 /* 記事レイアウト */
 .articles {
     margin: 10px;
+    height: 500px;
 }
 .articles article {
     border: solid 1px rgb(185, 218, 41);
@@ -55,4 +56,16 @@
 }
 .articles a {
     color: rgb(115, 122, 51);
+}
+
+/* フッターレイアウト */
+footer {
+    height: 200px;
+    background-color: rgb(60, 165, 142);
+    padding: 20px;
+    text-align: center;
+}
+footer h1 {
+    color: rgb(109, 136, 35);
+    font-size: 50px;
 }

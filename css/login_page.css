@@ -48,12 +48,12 @@
     height: 40px;
 }
 
+
 /* グーグルログインフォーム */
 .google_login p {
     font-size: small;
 }
 
-/* 注意書き */
 .memo {
     text-align: center;
 }

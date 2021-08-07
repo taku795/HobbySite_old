@@ -2,7 +2,7 @@
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/menyu.css?v=2">
+    <link rel="stylesheet" href="../css/menyu.css?v=1">
     <title>メニュー画面</title>
 </head>
 <body>
@@ -40,8 +40,9 @@
             echo $alert_e;
     } 
     ?>
-
+    <h3>設定</h3>
     <section class="menyupage">
+        <p>あなただけがみれる画面です</p>
         <div class="loginID">
             <?php
             echo "<p>ログインID　　：$_SESSION[login_id]</p>";
@@ -64,9 +65,40 @@
         ' name='user_mail'>
         <input type='submit' value='変更'></p>
         </form>
-
         <p>Googleのメールアドレスを設定するとログインがスムーズになります</p>
-        <a href="../home.php">ホーム画面へ</a>
     </section>
+
+    <a class="home_link" href="../home.php">ホーム画面へ</a>
+
+    <section class="account_page">
+        <h3>アカウントページ</h3>
+        <p><?php echo $_SESSION['user_name']; ?>　さんの記事一覧</p>
+        <article class="articles">
+            <?php
+                try{
+                    $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
+                  'b0e1b2175788a4','46b12765');
+                  }catch(PDOException $e){
+                    print('DB接続エラー:'.$e->getMessage());
+                  }
+
+                foreach ($sql=$pdo->query('select * from content') as $row) {
+                    if ($row['Login_ID']==$_SESSION['login_id']) {
+                        echo 
+                        "
+                        <article>
+                        <form name='form$row[id]' target='_brank' action='../content/content_page.php?content_id=$row[id]' method='post'>
+                        <a href='javascript:form$row[id].submit()'>
+                        <p>記事タイトル：$row[Title]</p>
+                        <p>$row[Content]</p>
+                        </a>
+                        </form>
+                        </article>
+                        ";
+                    }
+                }
+            ?>
+    </article>
+</section>
 </body>
 </html>
