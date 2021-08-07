@@ -91,7 +91,6 @@
     }
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     var Follower_ID ="<?php echo $buf[0]['Login_ID'];?>";
     var Follow_ID ="<?php echo $_SESSION['login_id'];?>";
