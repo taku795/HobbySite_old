@@ -13,17 +13,31 @@
       print('DB接続エラー:'.$e->getMessage());
     }
     session_start();
-    //コンテンツidからlogin_idを抽出
-    //そのユーザーの記事を獲得
+    //記事画面からアクセスした場合
+    if ($_REQUEST['content_id']!=null) {
+      $sql = $pdo->prepare("SELECT * FROM content WHERE id=?");
+      $sql->execute([$_REQUEST['content_id']]);
+      $result = $sql->fetchAll(PDO::FETCH_BOTH);
+      $Login_ID=$result[0]['Login_ID'];
+
+      $sql = $pdo->prepare("SELECT * FROM users WHERE Login_ID=?");
+      $sql->execute([$result[0]['Login_ID']]);
+      $result = $sql->fetchAll(PDO::FETCH_BOTH);
+      $name=$result[0]['User_Name'];
+    } else {
+      //フォロー一覧からアクセスした場合
+      $Login_ID = $_POST['Login_ID'];
+      $name = $_POST['name'];
+    }
   ?>
   <section class="account_page">
     <h3>アカウントページ</h3>
-    <p><?php  ?>　さんの記事一覧</p>
+    <p><?php echo $name; ?>　さんの記事一覧</p>
     <article class="articles">
       <?php
       //セッションのログインidじゃなくて前で抽出したログインidを使う
         foreach ($sql=$pdo->query('select * from content') as $row) {
-          if ($row['Login_ID']==$_SESSION['login_id']) {
+          if ($row['Login_ID']==$Login_ID) {
             echo 
             "
             <article>
