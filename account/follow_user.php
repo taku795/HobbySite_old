@@ -2,7 +2,7 @@
 <html lang="jp">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="../css/follow_user.css?v=1">
+  <link rel="stylesheet" href="../css/follow_user.css">
   <title>フォローユーザー一覧</title>
 </head>
 <body>
