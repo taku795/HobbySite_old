@@ -2,6 +2,7 @@
 <html lang="jp">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/acount_page.css">
   <title>アカウントページ</title>
 </head>
 <body>
@@ -31,8 +32,16 @@
     }
   ?>
   <section class="account_page">
-    <h3>アカウントページ</h3>
+    <h2>アカウントページ</h2>
     <p><?php echo $name; ?>　さんの記事一覧</p>
+
+    <!-- フォロー -->
+    <?php
+      if ($buf[0]['Login_ID']!=$_SESSION['login_id']) {
+          echo "<button id=follow onclick='onClick()'></button>";
+      }
+    ?>
+
     <article class="articles">
       <?php
       //セッションのログインidじゃなくて前で抽出したログインidを使う
@@ -54,5 +63,59 @@
       ?>
     </article>
   </section>
+
+  <a class="home_link" href="../home.php">ホーム画面へ</a>
+
+  <!-- フォローボタンの処理 -->
+  <?php
+   if($_GET['content_id']!=null) {
+     $sql=$pdo->prepare("SELECT * FROM content WHERE id=?");
+     $sql -> execute([$_GET['content_id']]);
+     $result = $sql->fetchAll(PDO::FETCH_BOTH);
+
+     $follower_id = $result[0]['Login_ID'];
+   } else {
+    $follower_id = $_POST['Login_ID'];
+   }
+  ?>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    var Follower_ID ="<?php echo $follower_id;?>";
+    var Follow_ID ="<?php echo $_SESSION['login_id'];?>";
+    //ページ読み込みの時
+    if (Follower_ID!=Follow_ID) {
+        $.ajax({
+            type: 'post',
+            url: "https://taku777.herokuapp.com/content/follow.php",
+            data: {"Follow_ID": Follow_ID,"Follower_ID": Follower_ID},
+            success: function(result){
+                if (result==1) {
+                    follow.innerHTML = 'フォロー';
+                } else {
+                    follow.innerHTML = 'フォロー中';
+                }
+
+                
+            }
+        });
+    }
+    
+
+    //ボタンをクリックした時
+    function onClick() {
+        $.ajax({
+            type: 'post',
+            url: "https://taku777.herokuapp.com/content/follow.php?click=1",
+            data: {"Follow_ID": Follow_ID,"Follower_ID": Follower_ID},
+            success: function(result){
+                if (result==1) {
+                    follow.innerHTML = 'フォロー';
+                } else {
+                    follow.innerHTML = 'フォロー中';
+                }
+            }
+        });
+    }
+</script>
 </body>
 </html>

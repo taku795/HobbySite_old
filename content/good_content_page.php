@@ -2,9 +2,12 @@
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/good_content.css">
     <title>いいねした記事</title>
 </head>
 <body>
+  <h2>いいねした記事一覧</h2>
+  <section class="articles">
   <?php
     session_start();
     try{
@@ -40,6 +43,7 @@
       ";
     }
   ?>
+  </section>
   <a class="home_link" href="../home.php">ホーム画面へ</a>
 </body>
 </html>

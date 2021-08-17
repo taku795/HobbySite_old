@@ -31,27 +31,28 @@
 
     echo "
     <section class='article'>
-    <p>作者：$content_name</p>
-    <a href='../account/account_page.php?content_id=$id'>$content_name</a>
+    <p>作者：<a href='../account/account_page.php?content_id=$id'>$content_name</a></p>
     <p>投稿日時：$day</p>
     <p>タイトル：$title</p>
     <p>記事内容</p>
     <div class='content'>
     <p>$content</p>
     </div>
-    </section>";
+    </section>"; 
     ?>
-
+    
     <!-- いいねぼたん -->
     <button id=good onclick="onClickGood()"></button>
     <div id="good_count"></div>
 
     <!-- フォロー -->
     <?php
-    if ($buf[0]['Login_ID']!=$_SESSION['login_id']) {
-        echo "<button id=follow onclick='onClick()'></button>";
-    }
+      if ($buf[0]['Login_ID']!=$_SESSION['login_id']) {
+          echo "<button id=follow onclick='onClick()'></button>";
+      }
     ?>
+  
+  <a class="home_link" href="../home.php">ホーム画面へ</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>

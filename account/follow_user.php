@@ -2,9 +2,11 @@
 <html lang="jp">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/follow_user.css?v=1">
   <title>フォローユーザー一覧</title>
 </head>
 <body>
+  <h2>フォローユーザー</h2>
   <?php
   try{
     $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
@@ -28,15 +30,13 @@
     $Login_ID=$buf[0]['Login_ID'];
     echo 
     "
-    <article>
-      <form name='form$number' target='_brank' action='account_page.php' method='post'>
-        <input type='hidden' name='Login_ID' value=$Login_ID>
-        <input type='hidden' name='name' value=$name>
-        <a href='javascript:form$number.submit()'>
-        <p>ユーザー：$name</p>
-        </a>
-      </form>
-    </article>
+    <form name='form$number' target='_brank' action='account_page.php' method='post'>
+      <input type='hidden' name='Login_ID' value=$Login_ID>
+      <input type='hidden' name='name' value=$name>
+      <a href='javascript:form$number.submit()'>
+      <p>ユーザー：$name</p>
+      </a>
+    </form>
     ";
   }
   

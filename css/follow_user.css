@@ -1,0 +1,17 @@
+@charset "utf-8";
+/*----------------------------------
+
+
+
+----------------------------------*/
+
+@import "layout.css";
+
+h2 {
+    padding: 20px;
+}
+form {
+    border-bottom: solid 1px rgb(156, 209, 12);
+    border-top: solid 1px rgb(156, 209, 12);
+    padding: 10px;
+}

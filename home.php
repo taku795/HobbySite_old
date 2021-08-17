@@ -20,11 +20,15 @@
         </form>
     </section>
 
-    <section>
-      <p>いいねした記事を表示する</p>
-      <a href="content/good_content_page.php">こちら</a>
-      <p>フォローしている人の記事一覧を表示</p>
-      <a href="account/follow_user.php">こちら</a>
+    <section class="account">
+      <div class="good">
+        <p>いいねした記事を表示する</p>
+        <a href="content/good_content_page.php">こちら</a>
+      </div>
+      <div class="follow">
+        <p>フォローしている人の記事一覧を表示</p>
+        <a href="account/follow_user.php">こちら</a>
+      </div>
     </section>
 
     <section class="board">

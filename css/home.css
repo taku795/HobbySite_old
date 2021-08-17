@@ -29,6 +29,13 @@
     margin-bottom: 10px;
 }
 
+/* アカウントページへ */
+.account {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 10px;
+}
+
 /* 掲示板レイアウト */
 .board {
     margin: 10px;
