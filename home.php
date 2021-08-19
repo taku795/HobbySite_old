@@ -26,7 +26,7 @@
         <a href="content/good_content_page.php">こちら</a>
       </div>
       <div class="follow">
-        <p>フォローしている人の記事一覧を表示</p>
+        <p>フォローしている人の一覧を表示</p>
         <a href="account/follow_user.php">こちら</a>
       </div>
     </section>
@@ -50,35 +50,39 @@
           </article>
           ";
         }
+        ?>
+      </div>
+    </section>
+
+    <section class="articles">
+      <h2>記事一覧</h2>
+      <?php
+      //記事内容を新しい順に取得して表示
+      session_start();
+
+      foreach($sql=$pdo->query('select * from content') as $row ) {
+          echo 
+          "
+          <article>
+          <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
+          <a href='javascript:form$row[id].submit()'>
+          <div class='content'>
+          <p>タイトル：$row[Title]</p>
+          <div class='content-body'>
+          <p>$row[Content]</p>
+          </div>
+          </div>
+          </a>
+          </form>
+          </article>
+          ";
+      }
       ?>
-    </div>
-  </section>
+    </section>
 
-  <section class="articles">
-    <h2>記事一覧</h2>
-    <?php
-    //記事内容を新しい順に取得して表示
-    session_start();
-
-    foreach($sql=$pdo->query('select * from content') as $row ) {
-        echo 
-        "
-        <article>
-        <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
-        <a href='javascript:form$row[id].submit()'>
-        <p>記事タイトル：$row[Title]</p>
-        <p>$row[Content]</p>
-        </a>
-        </form>
-        </article>
-        ";
-    }
-    ?>
-  </section>
-
-  <footer>
-    <h1>あなたの人生が<br>より楽しいものになりますように</h1>
-  </footer>
+    <footer>
+      <h1>あなたの人生が<br>より楽しいものになりますように</h1>
+    </footer>
   
 </body>
 </html>

@@ -4,8 +4,8 @@
 
 /* ヘッダーのレイアウト */
 .header {
-    background-color: rgb(60, 165, 142);
-}
+    background-color: rgb(176, 218, 238);
+} 
 .main_title {
     text-align: center;
     font-size: 50px;
@@ -38,41 +38,60 @@
 
 /* 掲示板レイアウト */
 .board {
-    margin: 10px;
+    margin: 30px 20px 30px 20px;
 }
 .board a {
-    color: rgb(115, 122, 51);
-}
+    font-size: large;
+} 
 .sum {
-    border: solid 1px rgb(185, 218, 41);
+    margin-top: 30px;
+    border: solid 1px;
     overflow: scroll;
-    height: 100px;
+    height: 200px;
+}
+.sum article {
+    margin: 20px;
 }
 
 /* 記事レイアウト */
 .articles {
-    margin: 10px;
+    margin: 30px 20px 30px 20px;
     height: 500px;
+    overflow: hidden;
 }
 .articles article {
-    border: solid 1px rgb(185, 218, 41);
-    width:fit-content;
     padding:10px;
     margin:10px;
     display:inline-block;
+    width: 29%;
+    height: 200px;
+    border: solid 1px;
+    overflow: hidden;
+}
+.articles form {
+    display: block;
+    height: 100%;
+}
+.content {
+    text-align: center;
 }
 .articles a {
-    color: rgb(115, 122, 51);
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+.content-body p {
+    margin-top: 30px;
+    white-space: pre-wrap;
 }
 
 /* フッターレイアウト */
 footer {
     height: 200px;
-    background-color: rgb(60, 165, 142);
     padding: 20px;
     text-align: center;
+    background-color:rgb(176, 218, 238);
 }
 footer h1 {
-    color: rgb(109, 136, 35);
-    font-size: 50px;
+    font-size: 30px;
 }
