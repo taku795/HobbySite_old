@@ -40,7 +40,7 @@
     } 
     ?>
     <section class="menyupage">
-        <h3>設定</h3>
+        <h1>設定</h1>
         <p>あなただけがみれる画面です</p>
         <div class="loginID">
             <?php
