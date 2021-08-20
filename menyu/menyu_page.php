@@ -2,11 +2,10 @@
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/menyu.css?v=1">
+    <link rel="stylesheet" href="../css/menyu.css">
     <title>メニュー画面</title>
 </head>
 <body>
-    <h2>メニュー</h2>
     <?php
     session_start();
     $alert_s="<script>alert('";
@@ -40,8 +39,8 @@
             echo $alert_e;
     } 
     ?>
-    <h3>設定</h3>
     <section class="menyupage">
+        <h3>設定</h3>
         <p>あなただけがみれる画面です</p>
         <div class="loginID">
             <?php
@@ -71,9 +70,9 @@
     <a class="home_link" href="../home.php">ホーム画面へ</a>
 
     <section class="account_page">
-        <h3>アカウントページ</h3>
-        <p><?php echo $_SESSION['user_name']; ?>　さんの記事一覧</p>
-        <article class="articles">
+        <h1>アカウントページ画面</h1>
+        <p class='sub'><?php echo $_SESSION['user_name']; ?>　さんの記事一覧</p>
+        <div class="articles">
             <?php
                 try{
                     $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
@@ -89,8 +88,12 @@
                         <article>
                         <form name='form$row[id]' target='_brank' action='../content/content_page.php?content_id=$row[id]' method='post'>
                         <a href='javascript:form$row[id].submit()'>
-                        <p>記事タイトル：$row[Title]</p>
+                        <div class='content'>
+                        <p>タイトル：$row[Title]</p>
+                        <div class='content-body'>
                         <p>$row[Content]</p>
+                        </div>
+                        </div>
                         </a>
                         </form>
                         </article>
@@ -98,7 +101,7 @@
                     }
                 }
             ?>
-    </article>
-</section>
+        </div>
+    </section>
 </body>
 </html>

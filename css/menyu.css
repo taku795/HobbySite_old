@@ -7,16 +7,13 @@
 
 @import "layout.css";
 
-h2 {
-    padding: 20px;
-}
-h3 {
-    padding: 20px;
-}
-
-/* ログイン者のみがみれる個人情報一覧 */
+/* 設定 */
 .menyupage {
     text-align: center;
+    margin: 30px 20px 30px 20px;
+}
+.menyupage h1 {
+    text-align: left;
 }
 .loginID {
     width: 329px;
@@ -28,18 +25,42 @@ h3 {
     margin-bottom: 10px;
 }
 
+/* アカウントページ画面 */
+.account-page {
+    margin: 30px 20px 30px 20px;
+}
+.sub {
+    margin-left: 10px;
+}
+
 /* 記事レイアウト */
 .articles {
-    margin: 10px;
+    margin: 30px 20px 30px 20px;
     height: 500px;
+    overflow: hidden;
 }
 .articles article {
-    border: solid 1px rgb(185, 218, 41);
-    width:fit-content;
     padding:10px;
     margin:10px;
     display:inline-block;
+    width: 29%;
+    height: 200px;
+    border: solid 1px;
+    overflow: hidden;
+}
+.articles form {
+    display: block;
+    height: 100%;
+}
+.content {
+    text-align: center;
 }
 .articles a {
-    color: rgb(115, 122, 51);
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+.content-body p {
+    margin-top: 30px;
+    white-space: pre-wrap;
 }
