@@ -69,7 +69,7 @@
 
     <a class="home_link" href="../home.php">ホーム画面へ</a>
 
-    <section class="account_page">
+    <section class="account-page">
         <h1>アカウントページ画面</h1>
         <p class='sub'><?php echo $_SESSION['user_name']; ?>　さんの記事一覧</p>
         <div class="articles">
