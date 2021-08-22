@@ -32,35 +32,3 @@
 .sub {
     margin-left: 10px;
 }
-
-/* 記事レイアウト */
-.articles {
-    margin: 30px 20px 30px 20px;
-    height: 500px;
-    overflow: hidden;
-}
-.articles article {
-    padding:10px;
-    margin:10px;
-    display:inline-block;
-    width: 29%;
-    height: 200px;
-    border: solid 1px;
-    overflow: hidden;
-}
-.articles form {
-    display: block;
-    height: 100%;
-}
-.content {
-    text-align: center;
-}
-.articles a {
-    text-decoration: none;
-    display: block;
-    height: 100%;
-}
-.content-body p {
-    margin-top: 30px;
-    white-space: pre-wrap;
-}
