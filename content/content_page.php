@@ -6,7 +6,6 @@
     <title>記事ページ</title>
 </head>
 <body>
-    <h2>記事</h2>
     <?php
     try{
         $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
@@ -31,26 +30,92 @@
 
     echo "
     <section class='article'>
-    <p>作者：<a href='../account/account_page.php?content_id=$id'>$content_name</a></p>
-    <p>投稿日時：$day</p>
-    <p>タイトル：$title</p>
-    <p>記事内容</p>
+    <div class='article-header'>
+        <div class='profile'>
+            <p>プロフィール：<a href='../account/account_page.php?content_id=$id'>$content_name</a></p>
+            <a href='../account/account_page.php?content_id=$id'>この作者について</a>
+        </div>
+        <div class='day'>
+            <p>$day</p>
+        </div>
+            <div class='title'>
+            <h1>$title</h1>
+        </div>
+    </div>
+    ";
+    
+    ?>
+
+    <div class="social-buttons">
+        <!-- いいねぼたん -->
+        <div class="good-area">
+            <button id=good onclick="onClickGood()"></button>
+            <div id="good_count"></div>
+        </div>
+
+        <!-- フォロー -->
+        <div class="follow-area">
+            <?php
+            if ($buf[0]['Login_ID']!=$_SESSION['login_id']) {
+                echo "<button id=follow onclick='onClick()'></button>";
+            }
+            ?>
+        </div>
+        
+
+        <!-- Twitterに共有 -->
+        <?php
+        //url作成
+        $twitter_url = "https://twitter.com/share?text=$title";
+        ?>
+        <div class="twitter-area">
+            <a href="<?php echo $twitter_url; ?>" class="twitter-share-button" data-show-count="false">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <p>記事を共有する</p>
+        </div>
+        
+    </div>
+
+    <!-- 記事内容 -->
+    <?php
+    echo "
     <div class='content'>
     <p>$content</p>
     </div>
-    </section>"; 
-    ?>
-    
-    <!-- いいねぼたん -->
-    <button id=good onclick="onClickGood()"></button>
-    <div id="good_count"></div>
+    ";
 
-    <!-- フォロー -->
-    <?php
-      if ($buf[0]['Login_ID']!=$_SESSION['login_id']) {
-          echo "<button id=follow onclick='onClick()'></button>";
-      }
     ?>
+
+    <div class="social-buttons">
+        <!-- いいねぼたん -->
+        <div class="good-area">
+            <button id=good2 onclick="onClickGood()"></button>
+            <div id="good_count2"></div>
+        </div>
+
+        <!-- フォロー -->
+        <div class="follow-area">
+            <?php
+            if ($buf[0]['Login_ID']!=$_SESSION['login_id']) {
+                echo "<button id=follow2 onclick='onClick()'></button>";
+            }
+            ?>
+        </div>
+        
+
+        <!-- Twitterに共有 -->
+        <?php
+        //url作成
+        $twitter_url = "https://twitter.com/share?text=$title";
+        ?>
+        <div class="twitter-area">
+            <a href="<?php echo $twitter_url; ?>" class="twitter-share-button" data-show-count="false">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <p>記事を共有する</p>
+        </div>
+        
+    </div>
+    </section>
   
   <a class="home_link" href="../home.php">ホーム画面へ</a>
 
@@ -66,10 +131,13 @@
             var arr = JSON.parse(result);
             if (arr['good']==1) {
                 good.innerHTML = "良いね";
+                good2.innerHTML = "良いね";
             }　else {
                 good.innerHTML = "良いね解除";
+                good2.innerHTML = "良いね解除";
             }
             good_count.innerHTML = "いいねの数："+arr['good_count'];
+            good_count2.innerHTML = "いいねの数："+arr['good_count'];
         }
     });
 
@@ -83,10 +151,13 @@
                 var arr = JSON.parse(result);
                 if (arr['good']==1) {
                     good.innerHTML = "良いね";
+                    good2.innerHTML = "良いね";
                 }　else {
                     good.innerHTML = "良いね解除";
+                    good2.innerHTML = "良いね解除";
                 }
                 good_count.innerHTML = "いいねの数："+arr['good_count'];
+                good_count2.innerHTML = "いいねの数："+arr['good_count'];
             }
             });
     }
@@ -104,15 +175,14 @@
             success: function(result){
                 if (result==1) {
                     follow.innerHTML = 'フォロー';
+                    follow2.innerHTML = 'フォロー';
                 } else {
                     follow.innerHTML = 'フォロー中';
+                    follow2.innerHTML = 'フォロー中';
                 }
-
-                
             }
         });
     }
-    
 
     //ボタンをクリックした時
     function onClick() {
@@ -123,8 +193,10 @@
             success: function(result){
                 if (result==1) {
                     follow.innerHTML = 'フォロー';
+                    follow2.innerHTML = 'フォロー';
                 } else {
                     follow.innerHTML = 'フォロー中';
+                    follow2.innerHTML = 'フォロー中';
                 }
             }
         });

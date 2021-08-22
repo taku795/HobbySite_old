@@ -7,12 +7,37 @@
 
 @import "layout.css";
 
-h2 {
-    padding: 20px;
+/* ヘッダーレイアウト */
+.article-header {
+    margin: 30px 20px 30px 20px;
+}
+.day,.title {
+    display: inline-block;
+    width: 49%;
+}
+.profile {
+    margin-bottom: 20px;
+}
+
+/* ボタン類 */
+.social-buttons {
+    margin: 30px 20px 30px 20px;
+}
+.good-area,.twitter-area,.follow-area {
+    display: inline-table;
+}
+.follow-area {
+    width: 100px;
+}
+
+
+/* 記事本文 */
+.content {
+    margin: 60px 60px 60px 60px;
+    border: solid 1px;
+    padding: 50px;
+    text-align: left;
 }
 .content p {
     white-space: pre-wrap;
-}
-.article p {
-    margin: 10px;
 }
