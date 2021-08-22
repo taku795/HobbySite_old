@@ -25,8 +25,11 @@ time, mark, audio, video {
 
 /* 共通レイアウト */
 a {
-    color: black;
     text-decoration: none;
+    color:#A67B5B;
+}
+h1,h2 {
+    color: #A67B5B;
 }
 
 .home_link {
@@ -47,7 +50,7 @@ a {
     padding:10px;
     margin:10px;
     display:inline-block;
-    width: 28%;
+    width: 29%;
     height: 200px;
     border: solid 1px;
     overflow: hidden;
@@ -63,6 +66,7 @@ a {
     text-decoration: none;
     display: block;
     height: 100%;
+    color: black;
 }
 .content-body p {
     margin-top: 30px;

@@ -2,6 +2,11 @@
 
 @import "layout.css";
 
+.account a {
+    text-decoration: underline;
+    color: -webkit-link;
+}
+
 /* ヘッダーのレイアウト */
 .header {
     background-color: rgb(176, 218, 238);
@@ -9,6 +14,7 @@
 .main_title {
     text-align: center;
     font-size: 50px;
+    color: black;
 }
 .sub_title {
     text-align: center;
