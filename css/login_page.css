@@ -8,7 +8,7 @@
 /* 通常ログインフォーム */
 .loginform {
     border-radius: 10px;
-    border: solid 5px rgb(122, 134, 50);
+    border: solid 5px #A67B5B;
     width: 50%;
     margin: auto;
     margin-top: 10%;
@@ -38,6 +38,10 @@
 }
 .new_set {
     margin-left: 10%;
+}
+.new_set a {
+    color: -webkit-link;
+    text-decoration: underline;
 }
 .new_test_login {
     margin: 10px;
