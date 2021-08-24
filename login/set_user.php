@@ -1,4 +1,3 @@
-<?php require "../header.php"; ?>
 <?php 
 //ユーザーID、パスワードに重複、謝りがないか確認
 $password_wrong=0;
@@ -48,5 +47,3 @@ if($sql->execute([$_REQUEST['new_user_id'],$_REQUEST['new_user_password']])) {
 
 <!-- 登録完了後ログイン画面に飛ばす -->
 <a href="../login_page.php">ログインページへ</a>
-
-<?php require "../footer.php"; ?>
