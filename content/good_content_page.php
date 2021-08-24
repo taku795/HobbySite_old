@@ -33,12 +33,16 @@
       echo 
       "
       <article>
-      <form name='form_good_$id' target='_brank' action='content_page.php?content_id=$id' method='post'>
-      <a href='javascript:form_good_$id.submit()'>
-      <p>記事タイトル：$title</p>
-      <p>$buf</p>
-      </a>
-      </form>
+        <form name='form_good_$id' target='_brank' action='content_page.php?content_id=$id' method='post'>
+          <a href='javascript:form_good_$id.submit()'>
+            <div class='content'>
+              <p>タイトル：$title</p>
+              <div class='content-body'>
+                <p>$buf</p>
+              </div>
+            </div>
+          </a>
+        </form>
       </article>
       ";
     }
