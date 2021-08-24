@@ -21,6 +21,14 @@
   $sql->execute([$_SESSION['login_id']]);
   $result = $sql->fetchAll(PDO::FETCH_BOTH);
 
+  //テーブルとして出力
+  echo "
+  <table width=100%>
+    <tr>
+      <th>ユーザー名</th>
+      <th>アカウントページへ</th>
+    </tr>";
+
   //その結果をアカウントページのaタグで表示
   for ($number=0;$result[$number]['Follower_ID']!=NULL;$number++) {
     $sql=$pdo->prepare("SELECT * FROM users WHERE Login_ID=?");
@@ -30,16 +38,23 @@
     $Login_ID=$buf[0]['Login_ID'];
     echo 
     "
-    <form name='form$number' target='_brank' action='account_page.php' method='post'>
-      <input type='hidden' name='Login_ID' value=$Login_ID>
-      <input type='hidden' name='name' value=$name>
-      <a href='javascript:form$number.submit()'>
-      <p>ユーザー：$name</p>
-      </a>
-    </form>
+    <tr>
+      <td align=center>
+        <p>$name</p>
+      </td>
+      <td align=center>
+        <form name='form$number' target='_brank' action='account_page.php' method='post'>
+        <input type='hidden' name='Login_ID' value=$Login_ID>
+        <input type='hidden' name='name' value=$name>
+        <a href='javascript:form$number.submit()'>
+        <p>こちら</p>
+        </a>
+        </form>
+      </td>
+    </tr>
     ";
   }
-  
+  echo "</table>";
   ?>
   
   <a class="home_link" href="../home.php">ホーム画面へ</a>
