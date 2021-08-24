@@ -1,7 +1,14 @@
-<?php require "../header.php"; ?>
-
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/new_page.css">
+    <title>新規登録画面</title>
+</head>
+<body>
+<section class="setform">
 <form action="set_user.php" method="post">
-<p>ユーザーID<input type="text" name="new_user_id"></p>
+<p>ユーザーID　　　　　：<input type="text" name="new_user_id"></p>
 <?php
 switch($_GET['ID_miss']) {
     case 1:
@@ -12,8 +19,8 @@ switch($_GET['ID_miss']) {
         break;
 }
 ?>
-<p>パスワード<input type="text" name="new_user_password"></p>
-<p>パスワード(再確認)<input type="text" name="new_user_password_re"></p>
+<p>パスワード　　　　　：<input type="text" name="new_user_password"></p>
+<p>パスワード（再確認）：<input type="text" name="new_user_password_re"></p>
 <?php
 switch($_GET['password_wrong']) {
     case 1:
@@ -24,7 +31,9 @@ switch($_GET['password_wrong']) {
         break;
 }
 ?>
-<input type="submit" value="登録">
+<input class="button" type="submit" value="登録">
 </form>
+</section>
 
-<?php require "../footer.php"; ?>
+</body>
+</html>

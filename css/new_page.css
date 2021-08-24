@@ -1,0 +1,25 @@
+@charset "utf-8";
+/*----------------------------------
+
+
+
+----------------------------------*/
+
+@import "layout.css";
+
+.setform {
+    border-radius: 10px;
+    border: solid 5px #A67B5B;
+    width: 50%;
+    margin: auto;
+    margin-top: 10%;
+    padding: 10px;
+}
+form {
+    text-align: center;
+}
+.button {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+}
