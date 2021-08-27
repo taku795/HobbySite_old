@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="../css/search.css?v=2">
+  <link rel="stylesheet" href="../css/search.css">
   <title>検索結果</title>
 </head>
 <body>
-  <h2>検索結果</h2>
+  <h1>検索結果</h1>
   <article class='articles'>
     <?php
       try{
@@ -16,21 +16,33 @@
         print('DB接続エラー:'.$e->getMessage());
       }
 
-      $sql=$pdo->prepare("select * from content where Title or content like ?");
-      $sql->execute(["%$_REQUEST[key_word]%"]);
-  
-      foreach ($sql->fetchAll() as $row) {
-        echo
-        "
-        <article>
-        <form name='form$row[id]' target='_brank' action='../content/content_page.php?content_id=$row[id]' method='post'>
-        <a href='javascript:form$row[id].submit()'>
-        <p>記事タイトル：$row[Title]</p>
-        <p>$row[Content]</p>
-        </a>
-        </form>
-        </article>
-        ";
+      //記事をキーワードで検索
+      if ($_REQUEST['key_word']!=NULL && $_REQUEST['tag']==NULL) {
+        $sql=$pdo->prepare("select * from content where Title or content like ?");
+        $sql->execute(["%$_REQUEST[key_word]%"]);
+        require("content_display.php");
+      } else if ($_REQUEST['key_word']==NULL && $_REQUEST['tag']!=NULL) {
+        $sql_buf=$pdo->prepare("select * from tag_to_content where Tag_ID=?");
+        $sql_buf->execute([$_REQUEST['tag']]);
+        
+        foreach($sql_buf->fetchAll() as $row) {
+          $sql=$pdo->prepare("select * from content where id=?");
+          $sql->execute([$row['Content_ID']]);
+          require("content_display.php");
+        }
+      } else if ($_REQUEST['key_word']!=NULL && $_REQUEST['tag']!=NULL) {
+        $sql=$pdo->prepare("select * from content where Title or content like ?");
+        $sql->execute(["%$_REQUEST[key_word]%"]);
+        require("content_display.php");
+
+        $sql_buf=$pdo->prepare("select * from tag_to_content where Tag_ID=?");
+        $sql_buf->execute([$_REQUEST['tag']]);
+
+        foreach($sql_buf->fetchAll() as $row) {
+          $sql=$pdo->prepare("select * from content where id=?");
+          $sql->execute([$row['Content_ID']]);
+          require("content_display.php");
+        }
       }
     ?>
   </article>
