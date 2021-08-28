@@ -6,9 +6,17 @@
     <title>記事投稿画面</title>
 </head>
 <body>
+    <?php
+    try{
+        $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
+        'b0e1b2175788a4','46b12765');
+    }catch(PDOException $e){
+        print('DB接続エラー:'.$e->getMessage());
+    }
+    session_start();
+    ?>
     <div class="header">
-        <h2>記事を書こう</h2>
-        <p>好きな趣味の魅力や気になっている趣味についてなど自由に書いてみよう</p>
+        <h1>趣味に関することを自由に書いてみよう</h1>
     </div>
     <form class="post_form" action='post.php' method='post'>
         <div class="title_form">
@@ -27,8 +35,20 @@
                 echo "<p>入力されていません</p>";
             }
             ?>
+            タグをつける：
+            <select name="tag">
+            <option value="">-</option>
+            <?php
+            //tag_masterからタグIDとnameを順番に
+            foreach($sql=$pdo->query('select * from tag_master') as $row ) {
+                echo "<option value=$row[Tag_ID]>$row[Tag_Name]</option>";
+            }
+            ?>
+            </select>
+            <br>
             <input type='submit' value='投稿する'>
         </div>
+        
     </form>
 
     <a class="home_link" href="../home.php">ホーム画面へ</a>

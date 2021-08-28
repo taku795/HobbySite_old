@@ -22,11 +22,19 @@ session_start();
 
 date_default_timezone_set('Asia/Tokyo');
     //タイムゾーンリセット
-$time=date("Y,m,d,H,i,s");
+$time=date("Y,m,d");
 $sql=$pdo->prepare('insert into content values(null,?,?,?,?)');
-if ($sql->execute([$_SESSION['login_id'],$_REQUEST['title'],$_REQUEST['content'],$time])) {
+if($sql->execute([$_SESSION['login_id'],$_REQUEST['title'],$_REQUEST['content'],$time])) {
     header('Location:post_end_page.php');
 }
 
+//タグを登録
+if ($_REQUEST['tag']!=NULL) {
+    $sql=$pdo->prepare('SELECT MAX(id) FROM content WHERE Login_ID=?');
+    $sql->execute([$_SESSION['login_id']]);
+    $result = $sql->fetchAll(PDO::FETCH_BOTH);
+    $content_id = $result[0]['MAX(id)'];
+    $pdo->query("insert into tag_to_content values(NULL,$_REQUEST[tag],$content_id)");
+}
 
 ?>
