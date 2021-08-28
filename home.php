@@ -7,6 +7,16 @@
   </head>
 
   <body>
+    <?php 
+      try{
+        $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
+        'b0e1b2175788a4','46b12765');
+      }catch(PDOException $e){
+        print('DB接続エラー:'.$e->getMessage());
+      }
+      session_start();
+    ?>
+
     <section class="header">
       <h1 class="main_title">趣味旅行</h1>
       <p class="sub_title">人生を楽しくするための趣味探しをお手伝いするサイト</p>
@@ -14,10 +24,20 @@
         <div class="menu"><a href="post/post_page.php"><h2>記事を書く</h2></a></div>
         <div class="menu"><a href="menyu/menyu_page.php"><h2>メニュー</h2></a></div>
       </nav>
-        <form action="search/search.php">
+      <form action="search/search.php">
         <p>キーワード検索：<input type="text" name='key_word' placeholder="テキストを入力">
+        タグ：
+        <select name="tag">
+          <option value="">-</option>
+          <?php
+          //tag_masterからタグIDとnameを順番に
+          foreach($sql=$pdo->query('select * from tag_master') as $row ) {
+            echo "<option value=$row[Tag_ID]>$row[Tag_Name]</option>";
+          }
+          ?>
+        </select>
         <input type="submit" value='検索'></p>
-        </form>
+      </form>
     </section>
 
     <section class="account">
@@ -36,12 +56,6 @@
       <p>興味のある趣味について語り合おう！</p>
       <div class="sum">
         <?php 
-        try{
-          $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
-        'b0e1b2175788a4','46b12765');
-        }catch(PDOException $e){
-          print('DB接続エラー:'.$e->getMessage());
-        }
         foreach($sql=$pdo->query('select * from thread') as $row ) {
           echo 
           "
@@ -58,24 +72,22 @@
       <h2>記事一覧</h2>
       <?php
       //記事内容を新しい順に取得して表示
-      session_start();
-
       foreach($sql=$pdo->query('select * from content') as $row ) {
-          echo 
-          "
-          <article>
-          <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
-          <a href='javascript:form$row[id].submit()'>
-          <div class='content'>
-          <p>タイトル：$row[Title]</p>
-          <div class='content-body'>
-          <p>$row[Content]</p>
-          </div>
-          </div>
-          </a>
-          </form>
-          </article>
-          ";
+        echo 
+        "
+        <article>
+        <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
+        <a href='javascript:form$row[id].submit()'>
+        <div class='content'>
+        <p>タイトル：$row[Title]</p>
+        <div class='content-body'>
+        <p>$row[Content]</p>
+        </div>
+        </div>
+        </a>
+        </form>
+        </article>
+        ";
       }
       ?>
     </section>
@@ -84,5 +96,5 @@
       <h1>あなたの人生が<br>より楽しいものになりますように</h1>
     </footer>
   
-</body>
+  </body>
 </html>
