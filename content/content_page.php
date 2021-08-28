@@ -9,12 +9,13 @@
     <?php
     try{
         $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
-      'b0e1b2175788a4','46b12765');
-      }catch(PDOException $e){
+        'b0e1b2175788a4','46b12765');
+    }catch(PDOException $e){
         print('DB接続エラー:'.$e->getMessage());
-      }
-      session_start();
+    }
+    session_start();
 
+    //コンテンツIDから著者の情報を抽出
     $sql=$pdo->prepare("SELECT * FROM content WHERE id=?");
     $sql -> execute([$_GET['content_id']]);
     $result = $sql->fetchAll(PDO::FETCH_BOTH);
@@ -27,6 +28,20 @@
     $sql -> execute([$result[0]['Login_ID']]);
     $buf = $sql->fetchAll(PDO::FETCH_BOTH);
     $content_name=$buf[0]['User_Name'];
+
+    //コンテンツIDからついているタグを抽出
+    $sql=$pdo->prepare("SELECT * FROM tag_to_content WHERE Content_ID=?");
+    $sql -> execute([$_GET['content_id']]);
+    $result = $sql->fetchAll(PDO::FETCH_BOTH);
+    for($tag_number=0;$result[$tag_number]['id']!=NULL;$tag_number++) {
+        //tagidからtag_masterを検索
+        $sql=$pdo->prepare("SELECT * FROM tag_master WHERE Tag_ID=?");
+        $sql -> execute([$result[$tag_number]['Tag_ID']]);
+        $result_buf = $sql->fetchAll(PDO::FETCH_BOTH);
+
+        //検索結果をタグ配列に代入
+        $tag[$tag_number]=$result_buf[0]['Tag_Name'];
+    }
 
     echo "
     <section class='article'>
@@ -84,6 +99,13 @@
     </div>
     ";
 
+    ?>
+    <!-- タグ -->
+    <?php
+    echo "タグ：";
+    foreach($tag as $row) {
+        echo "$row";
+    }
     ?>
 
     <div class="social-buttons">
