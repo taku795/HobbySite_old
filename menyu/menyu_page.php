@@ -65,6 +65,7 @@
         <input type='submit' value='変更'></p>
         </form>
         <p>Googleのメールアドレスを設定するとログインがスムーズになります</p>
+        <a href="content_delete.php">記事を消去する</a>
     </section>
 
     <a class="home_link" href="../home.php">ホーム画面へ</a>
@@ -76,29 +77,29 @@
             <?php
                 try{
                     $pdo=new PDO('mysql:host=us-cdbr-east-04.cleardb.com;dbname=heroku_57d4f20f139d026;charset=utf8',
-                  'b0e1b2175788a4','46b12765');
-                  }catch(PDOException $e){
+                    'b0e1b2175788a4','46b12765');
+                }catch(PDOException $e){
                     print('DB接続エラー:'.$e->getMessage());
-                  }
+                }
 
-                foreach ($sql=$pdo->query('select * from content') as $row) {
-                    if ($row['Login_ID']==$_SESSION['login_id']) {
-                        echo 
-                        "
-                        <article>
-                        <form name='form$row[id]' target='_brank' action='../content/content_page.php?content_id=$row[id]' method='post'>
-                        <a href='javascript:form$row[id].submit()'>
-                        <div class='content'>
-                        <p>タイトル：$row[Title]</p>
-                        <div class='content-body'>
-                        <p>$row[Content]</p>
-                        </div>
-                        </div>
-                        </a>
-                        </form>
-                        </article>
-                        ";
-                    }
+                $sql=$pdo->prepare('select * from content where Login_ID=?');
+                $sql->execute([$_SESSION['login_id']]);
+                foreach ($sql as $row) {
+                    echo 
+                    "
+                    <article>
+                    <form name='form$row[id]' target='_brank' action='../content/content_page.php?content_id=$row[id]' method='post'>
+                    <a href='javascript:form$row[id].submit()'>
+                    <div class='content'>
+                    <p>タイトル：$row[Title]</p>
+                    <div class='content-body'>
+                    <p>$row[Content]</p>
+                    </div>
+                    </div>
+                    </a>
+                    </form>
+                    </article>
+                    ";
                 }
             ?>
         </div>
