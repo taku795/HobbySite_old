@@ -139,7 +139,41 @@
     </div>
     </section>
   
-  <a class="home_link" href="../home.php">ホーム画面へ</a>
+    <section class="comment-area">
+        <div class="comment">
+            <p>------コメント------</p>
+            <!-- コメントを表示 -->
+            <?php
+            //nullを消去
+            $pdo->query("DELETE FROM comment_to_content WHERE Content_ID IS null OR Login_ID IS null");
+            
+            $sql = $pdo -> prepare("SELECT * FROM comment_to_content WHERE Content_ID=?");
+            $sql -> execute([$_GET['content_id']]);
+            $result_buf = $sql->fetchAll(PDO::FETCH_BOTH);
+            for ($number=0;$result_buf[$number]['id']!=NULL;$number++) {
+                $comment=$result_buf[$number]['Comment'];
+
+                $sql = $pdo -> prepare("SELECT * FROM users WHERE Login_ID=?");
+                $sql -> execute([$result_buf[$number]['Login_ID']]);
+                $result = $sql->fetchAll(PDO::FETCH_BOTH);
+                $name=$result[0]['User_Name'];
+
+                echo "<p>$name ： $comment</p>";
+            }
+            ?>
+        </div>
+
+        <div class="comment-form">
+            <!-- コメントを登録 -->
+            <form action="comment.php" method="post">
+                <textarea name="comment" cols="60" rows="10"></textarea>
+                <input type="hidden" name="content_id" value="<?php echo $_GET['content_id']; ?>">
+                <input type="submit" value="コメントする">
+            </form>
+        </div>
+    </section>
+    
+    <a class="home_link" href="../home.php">ホーム画面へ</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>

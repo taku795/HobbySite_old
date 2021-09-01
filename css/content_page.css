@@ -41,3 +41,18 @@
 .content p {
     white-space: pre-wrap;
 }
+
+/* コメント */
+.comment-area {
+    margin: 60px 30px 30px 30px;
+}
+.comment {
+    margin: 30px 0px 30px 0px;
+}
+.comment-form textarea {
+    resize: none;
+}
+.comment-area input {
+    display: block;
+    margin-top: 30px;
+}
