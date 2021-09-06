@@ -37,7 +37,7 @@
 
     <!-- フォロー -->
     <?php
-      if ($buf[0]['Login_ID']!=$_SESSION['login_id']) {
+      if ($result[0]['Login_ID']!=$_SESSION['login_id']) {
           echo "<button id=follow onclick='onClick()'></button>";
       }
     ?>
@@ -50,10 +50,14 @@
             echo 
             "
             <article>
-            <form name='form$row[id]' target='_brank' action='../content/content_page.php?content_id=$row[id]' method='post'>
+            <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
             <a href='javascript:form$row[id].submit()'>
-            <p>記事タイトル：$row[Title]</p>
+            <div class='content'>
+            <p>タイトル：$row[Title]</p>
+            <div class='content-body'>
             <p>$row[Content]</p>
+            </div>
+            </div>
             </a>
             </form>
             </article>
