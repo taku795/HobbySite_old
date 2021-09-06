@@ -7,8 +7,14 @@
 
 @import "layout.css";
 
-p {
-    padding: 20px;
+.set {
+    width: 50%;
+    margin: auto;
+    margin-top: 10%;
+    padding: 10px;
     text-align: center;
+}
+.set p {
+    margin: 10px;
     font-size: 35px;
 }

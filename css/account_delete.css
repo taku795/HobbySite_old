@@ -1,0 +1,18 @@
+@charset "utf-8";
+/*----------------------------------
+
+
+
+----------------------------------*/
+
+@import "layout.css";
+
+.delete_form {
+    width: 50%;
+    margin: auto;
+    margin-top: 10%;
+    padding: 10px;
+}
+.delete_form p {
+    margin: 10px;
+}
