@@ -65,7 +65,14 @@
         <input type='submit' value='変更'></p>
         </form>
         <p>Googleのメールアドレスを設定するとログインがスムーズになります</p>
-        <a href="content_delete.php">記事を消去する</a>
+        <p><a href="content_delete.php">記事を消去する</a></p>
+        <p><a href="finish.php">ログアウトする</a></p>
+        <?php
+        //もしテストユーザーじゃなければアカウント消去できる
+        if ($_SESSION['login_id']!='test') {
+            echo "<p><a href='account_delete.php'>アカウントを消去する</a></p>";
+        }
+        ?>
     </section>
 
     <a class="home_link" href="../home.php">ホーム画面へ</a>
