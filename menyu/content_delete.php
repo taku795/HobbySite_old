@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/content_delete.css">
@@ -8,7 +8,7 @@
 <body>
     消去する記事を選択
 
-    <form action="delete.php">
+    <form action="finish.php">
     <section class="articles">
     <?php
     try{
