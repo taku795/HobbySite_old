@@ -7,4 +7,9 @@
 
 @import "layout.css";
 
-
+.account-page {
+    margin: 30px 20px 30px 20px;
+}
+.sub {
+    margin-left: 10px;
+}

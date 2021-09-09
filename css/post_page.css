@@ -7,9 +7,6 @@
 
 @import "layout.css";
 
-h1 {
-    margin: 30px 20px 30px 20px;
-}
 .post_form,.title_form,.content_form {
     margin: 10px;
 }

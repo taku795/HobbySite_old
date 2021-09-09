@@ -5,14 +5,12 @@
 
 ----------------------------------*/
 
-@import "layout.css";
-
 /* 設定 */
 .menyupage {
     text-align: center;
     margin: 30px 20px 30px 20px;
 }
-.menyupage h1 {
+.menyupage h2 {
     text-align: left;
 }
 .loginID {
