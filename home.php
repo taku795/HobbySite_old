@@ -15,86 +15,103 @@
         print('DB接続エラー:'.$e->getMessage());
       }
       session_start();
+      
+      //名前変更時
+      $alert_s="<script>alert('";
+      $alert_e="');</script>";
+      switch($_GET['change_N']) {
+        case 1:
+          echo $alert_s;
+          echo '変更しました';
+          echo $alert_e;
+          break;
+        case 2:
+          echo $alert_s;
+          echo '入力欄が空欄です';
+          echo $alert_e;
+          break;
+      } 
+      switch($_GET['change_M']) {
+        case 1:
+          echo $alert_s;
+          echo '変更しました';
+          echo $alert_e;
+          break;
+        case 2:
+          echo $alert_s;
+          echo '入力欄が空欄です';
+          echo $alert_e;
+          break;
+        case 3:
+          echo $alert_s;
+          echo '正規のメールアドレスではありません';
+          echo $alert_e;
+        } 
     ?>
 
     <section class="header">
-      <h1 class="main_title">趣味旅行</h1>
-      <p class="sub_title">人生を楽しくするための趣味探しをお手伝いするサイト</p>
+      <div class="title">
+        <h1 class="main_title">趣味旅行</h1>
+        <p class="sub_title">人生を楽しくするための趣味探しをお手伝いするサイト</p>
+      </div>
       <nav class="menubar">
-        <div class="menu"><a href="post/post_page.php"><h2>記事を書く</h2></a></div>
-        <div class="menu"><a href="menyu/menyu_page.php"><h2>メニュー</h2></a></div>
-      </nav>
-      <form action="search/search.php">
-        <p>キーワード検索：<input type="text" name='key_word' placeholder="テキストを入力">
-        タグ：
-        <select name="tag">
-          <option value="">-</option>
-          <?php
-          //tag_masterからタグIDとnameを順番に
-          foreach($sql=$pdo->query('select * from tag_master') as $row ) {
-            echo "<option value=$row[Tag_ID]>$row[Tag_Name]</option>";
-          }
-          ?>
-        </select>
-        <input type="submit" value='検索'></p>
-      </form>
-    </section>
-
-    <section class="account">
-      <div class="good">
-        <p>いいねした記事を表示する</p>
-        <a href="content/good_content_page.php">こちら</a>
-      </div>
-      <div class="follow">
-        <p>フォローしている人の一覧を表示</p>
-        <a href="account/follow_user.php">こちら</a>
-      </div>
-    </section>
-
-    <section class="board">
-      <h2>趣味の語り場</h2>
-      <p>興味のある趣味について語り合おう！</p>
-      <div class="sum">
-        <?php 
-        foreach($sql=$pdo->query('select * from thread') as $row ) {
-          echo 
-          "
-          <article>
-          <a href='board/board.php?thread_id=$row[id]'>$row[title]</a>
-          </article>
-          ";
-        }
-        ?>
-      </div>
-    </section>
-
-    <section class="articles">
-      <h2>記事一覧</h2>
-      <?php
-      //記事内容を新しい順に取得して表示
-      foreach($sql=$pdo->query('select * from content') as $row ) {
-        echo 
-        "
-        <article>
-        <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
-        <a href='javascript:form$row[id].submit()'>
-        <div class='content'>
-        <p>タイトル：$row[Title]</p>
-        <div class='content-body'>
-        <p>$row[Content]</p>
-        </div>
-        </div>
-        </a>
+        <button id="home"><a href="home.php">ホーム</a></button>
+        <button id="room">語り部屋</button>
+        <button id="search">検索</button>
+        <button id="menyu">メニュー</button>
+        <button id="good">いいね</button>
+        <button id="follow">フォロー</button>
+        <form action="post/post_page.php">
+        <button>記事を書く</button>
         </form>
-        </article>
-        ";
-      }
-      ?>
+      </nav>
     </section>
+
+    
+    <div id="main" class="main"></div>
 
     <footer>
       <h1>あなたの人生が<br>より楽しいものになりますように</h1>
     </footer>
+    
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      $(function() {
+        //通常読み込み時
+        $('#main').load('all_content_page.php');
+
+        //検索時
+        <?php
+        if ($_REQUEST['key_word'] || $_REQUEST['tag']) {
+          echo "$('#main').load('search/search.php?key_word=$_REQUEST[key_word]&tag=$_REQUEST[tag]');";
+        }
+        ?>
+
+        //クリック時
+        $('#home').click(function() {
+          $('#main').load('all_content_page.php');
+        })
+        $('#room').click(function() {
+          $('#main').load('all_board.php');
+        })
+        $('#search').click(function() {
+          $('#main').load('search_form.php');
+        })
+        $('#write').click(function() {
+          $('#main').load('post_page.php');
+        })
+        $('#menyu').click(function() {
+          $('#main').load('menyu_page.php');
+        })
+        $('#good').click(function() {
+          $('#main').load('good_content_page.php');
+        })
+        $('#follow').click(function() {
+          $('#main').load('follow_user.php');
+        })
+        
+      })
+    </script>
   
   </body>
 </html>

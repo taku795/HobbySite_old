@@ -43,14 +43,13 @@ h1,h2 {
 /* 記事表示レイアウト */
 .articles {
     margin: 30px 20px 30px 20px;
-    height: 500px;
-    overflow: hidden;
+    text-align: center;
 }
 .articles article {
     padding:10px;
     margin:10px;
     display:inline-block;
-    width: 260px;
+    width: 80%;
     height: 200px;
     border: solid 1px;
     overflow: hidden;
@@ -61,6 +60,10 @@ h1,h2 {
 }
 .content {
     text-align: center;
+}
+.content-body {
+    text-align: left;
+    margin-left: 10%;
 }
 .articles a {
     text-decoration: none;

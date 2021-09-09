@@ -10,53 +10,33 @@
 /* ヘッダーのレイアウト */
 .header {
     background-color: rgb(176, 218, 238);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 } 
-.main_title {
-    text-align: center;
-    font-size: 50px;
+.header button {
+    background-color: rgba(24, 42, 173, 0.42);
+    border: none;
+    border-radius: 2vh;
+    font-size: 18px;
+    color: black;
+    margin: 6px 20px 2px 2px;
+    padding: 10px 10px 10px 10px;
+}
+.header a {
+    font-size: 18px;
     color: black;
 }
-.sub_title {
-    text-align: center;
+.header nav {
+    margin-left: auto;
 }
-.header h2 {
-    display: inline-block;
-    text-align: center;
-}
-
-.menu {
-    text-align: center;
-}
-.menubar {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.main_title {
+    color: black;
 }
 
-/* アカウントページへ */
-.account {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 10px;
-}
-
-/* 掲示板レイアウト */
-.board {
+/* divレイアウト */
+.main {
     margin: 30px 20px 30px 20px;
-}
-.board a {
-    font-size: large;
-} 
-.sum {
-    margin-top: 30px;
-    border: solid 1px;
-    overflow: scroll;
-    height: 200px;
-}
-.sum article {
-    margin: 20px;
+    min-height: 500px;
 }
 
 /* フッターレイアウト */
