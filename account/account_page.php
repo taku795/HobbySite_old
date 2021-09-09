@@ -33,7 +33,7 @@
   ?>
   <section class="account_page">
     <h2>アカウントページ</h2>
-    <p><?php echo $name; ?>　さんの記事一覧</p>
+    <p class="sub"><?php echo $name; ?>　さんの記事一覧</p>
 
     <!-- フォロー -->
     <?php
@@ -50,7 +50,7 @@
             echo 
             "
             <article>
-            <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
+            <form name='form$row[id]' action='../content/content_page.php?content_id=$row[id]' method='post'>
             <a href='javascript:form$row[id].submit()'>
             <div class='content'>
             <p>タイトル：$row[Title]</p>
