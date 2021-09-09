@@ -74,7 +74,8 @@
       <h1>あなたの人生が<br>より楽しいものになりますように</h1>
     </footer>
     
-    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script>
       $(function() {
         //通常読み込み時
