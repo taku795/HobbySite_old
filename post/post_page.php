@@ -15,9 +15,7 @@
     }
     session_start();
     ?>
-    <div class="header">
-        <h1>趣味に関することを自由に書いてみよう</h1>
-    </div>
+    <h1>趣味に関することを自由に書いてみよう</h1>
     <form class="post_form" action='post.php' method='post'>
         <div class="title_form">
             <p>タイトル</p><input type='text' name='title' placeholder="タイトルを入力">
