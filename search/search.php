@@ -2,11 +2,9 @@
 <html lang="jp">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="../css/search.css">
-  <title>検索結果</title>
 </head>
 <body>
-  <h1>検索結果</h1>
+  <h2>検索結果</h2>
   <article class='articles'>
     <?php
       try{
@@ -15,6 +13,7 @@
       }catch(PDOException $e){
         print('DB接続エラー:'.$e->getMessage());
       }
+      session_start();
 
       //記事をキーワードで検索
       if ($_REQUEST['key_word']!=NULL && $_REQUEST['tag']==NULL) {
@@ -46,6 +45,5 @@
       }
     ?>
   </article>
-  <a class="home_link" href="../home.php">ホーム画面へ</a>
 </body>
 </html>

@@ -4,7 +4,7 @@ if ($sql!=NULL) {
     echo
     "
     <article>
-      <form name='form$row[id]' target='_brank' action='content/content_page.php?content_id=$row[id]' method='post'>
+      <form name='form$row[id]' target='_brank' action='../content/content_page.php?content_id=$row[id]' method='post'>
       <a href='javascript:form$row[id].submit()'>
       <div class='content'>
       <p>タイトル：$row[Title]</p>
