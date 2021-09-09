@@ -6,8 +6,7 @@
     <title>記事消去</title>
 </head>
 <body>
-    消去する記事を選択
-
+    <h2>消去する記事を選択</h2>
     <form action="finish.php">
     <section class="articles">
     <?php
@@ -53,7 +52,5 @@
     <input class='submit-button' type="submit" value="消去">
     </form>
     </section>
-
-    <a class="home_link" href="../home.php">ホーム画面へ</a>
 </body>
 </html>

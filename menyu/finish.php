@@ -26,7 +26,7 @@
                 $sql->execute([$row]);
             }
             echo "<p>消去しました</p>";
-            echo "<a href='menyu_page.php'>メニュートップへ</a>";
+            echo "<a href='../home.php'>ホームへ</a>";
         }
 
         //アカウントの消去
