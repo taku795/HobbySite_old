@@ -2,7 +2,6 @@
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/good_content.css">
 </head>
 <body>
   <h2>いいねした記事一覧</h2>
