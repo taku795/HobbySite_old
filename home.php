@@ -46,25 +46,33 @@
           echo $alert_s;
           echo '正規のメールアドレスではありません';
           echo $alert_e;
-        } 
+      }
+      if ($_GET['no_title']) {
+        echo $alert_s;
+        echo "タイトルが入力されていません";
+        echo $alert_e;
+      }
+      if ($_GET['no_content']) {
+        echo $alert_s;
+        echo "投稿内容が入力されていません";
+        echo $alert_e;
+      }
     ?>
 
     <section class="header">
       <div class="title">
-        <h1 class="main_title">趣味旅行</h1>
-        <p class="sub_title">人生を楽しくするための趣味探しをお手伝いするサイト</p>
+        <h1>趣味旅行</h1>
+        <p>人生を楽しくするための趣味探しをお手伝いするサイト</p>
       </div>
-      <nav class="menubar">
-        <button id="home"><a href="home.php">ホーム</a></button>
-        <button id="room">語り部屋</button>
-        <button id="search">検索</button>
-        <button id="menyu">メニュー</button>
-        <button id="good">いいね</button>
-        <button id="follow">フォロー</button>
-        <form action="post/post_page.php">
-        <button>記事を書く</button>
-        </form>
-      </nav>
+      <ul class="nav">
+        <li id="home"><a href="home.php">ホーム</a></li>
+        <li id="write"><a>記事を書く</a></li>
+        <li id="room"><a>語り部屋</a></li>
+        <li id="search"><a>検索</a></li>
+        <li id="menyu"><a>メニュー</a></li>
+        <li id="good"><a>いいね</a></li>
+        <li id="follow"><a>フォロー</a></li>
+      </ul>
     </section>
 
     
@@ -87,7 +95,6 @@
           echo "$('#main').load('search/search.php?key_word=$_REQUEST[key_word]&tag=$_REQUEST[tag]');";
         }
         ?>
-
         //クリック時
         $('#home').click(function() {
           $('#main').load('all_content_page.php');

@@ -5,8 +5,6 @@
 
 ----------------------------------*/
 
-@import "layout.css";
-
 .post_form,.title_form,.content_form {
     margin: 10px;
 }
