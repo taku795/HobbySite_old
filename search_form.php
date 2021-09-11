@@ -16,11 +16,11 @@
 
   ?>
       <form class="search">
-        <div>
-          <p>キーワード：<input type="text" name='key_word' placeholder="テキストを入力"></p>
+        <div class="word">
+          <input type="text" name='key_word' placeholder="キーワードを入力">
         </div>
-        <div>
-          <p>タグ：
+        <div class="tag">
+          <p>タグを選択：
           <select name="tag">
             <option value="">-</option>
             <?php
@@ -31,7 +31,7 @@
             ?>
           </select></p>
         </div>
-        <input type="submit" value='検索'>
+        <input class="submit" type="submit" value='検索'>
       </form>
 
     

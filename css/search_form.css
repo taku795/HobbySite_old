@@ -6,6 +6,25 @@
 ----------------------------------*/
 
 .search {
-    width: 50%;
+    width: 70%;
     margin: auto;
+}
+.search,.word,.tag {
+    text-align: center;
+}
+.word input {
+    height: 50px;
+    width: 80%;
+}
+.tag {
+    margin-top: 20px;
+}
+.tag select {
+    width: 90px;
+    height: 30px;
+}
+.submit {
+    margin-top: 20px;
+    height: 40px;
+    width: 60px;
 }
