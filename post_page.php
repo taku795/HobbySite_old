@@ -41,7 +41,7 @@
                 </select>
                 <br>
             </div>
-            <textarea name="content" rows="10" placeholder="テキストを入力"></textarea>
+            <textarea id="textarea" name="content" rows="10" placeholder="テキストを入力"></textarea>
     
             <input type='submit' value='投稿する'>
         </div>     
