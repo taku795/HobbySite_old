@@ -15,7 +15,7 @@
   session_start();
 
   ?>
-      <form class="search">
+      <form class="search" action="home.php">
         <div class="word">
           <input type="text" name='key_word' placeholder="キーワードを入力">
         </div>
