@@ -93,13 +93,17 @@
 
     <!-- 記事内容 -->
     <?php
+    $patern = '/[\\\]{3}マップ([1-9]):([ぁ-んァ-ヶー一-龠]+)[\\\]{3}/u';
+    if (preg_match($patern,$content)) {
+        $content=preg_replace($patern,"<div id='map$1_area' class='map'></div><p id='map$1_place' class='map_place'>$2</p>",$content);
+    }
     echo "
     <div class='content'>
     <p>$content</p>
     </div>
     ";
-
     ?>
+
     <!-- タグ -->
     <?php
     echo "タグ：";
@@ -256,6 +260,52 @@
                 }
             }
         });
+    }
+</script>
+
+<script
+          src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBpyyrVRBNkYFhModUxYGrgeJLAsmwW6Uo&callback=initMap&libraries=&v=weekly'
+          async
+        >
+</script>
+<script>
+    function initMap() {
+        for (num=1;document.getElementById('map'+num+'_area');num++) {
+            <?php
+            //変換後の記事内容を読み込んでマップクラスを検索しscriptを作成
+            $patern = "class='map'";
+            $map=substr_count($content,$patern);
+            for ($num=1;$num<=$map;$num++) {
+            echo 
+            "
+            if (document.getElementById('map'+$num+'_area')) {
+            var target = document.getElementById('map'+$num+'_area');  
+            var address = document.getElementById('map'+$num+'_place').innerHTML; 
+            var geocoder = new google.maps.Geocoder();  
+
+            geocoder.geocode({
+                address: address 
+            }, function(results, status){    
+                if (status === 'OK' && results[0]){                                       
+                map_setting={
+                    zoom: 17,
+                    center: results[0].geometry.location,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                new google.maps.Map(
+                    document.getElementById('map'+$num+'_area'),
+                    map_setting
+                );                    
+                }else{ 
+                alert('失敗しました。理由: ' + status);
+                return;
+                }                
+            });
+            }
+            ";
+            }
+            ?>              
+        }
     }
 </script>
 

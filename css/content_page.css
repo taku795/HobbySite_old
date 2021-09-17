@@ -32,6 +32,9 @@
 
 
 /* 記事本文 */
+.map_place {
+    display: none;
+}
 .content {
     margin: 60px 60px 60px 60px;
     border: solid 1px;
@@ -40,6 +43,11 @@
 }
 .content p {
     white-space: pre-wrap;
+}
+.map {
+    height: 100px;
+    width: 90%;
+    margin: 20px;
 }
 
 /* コメント */
