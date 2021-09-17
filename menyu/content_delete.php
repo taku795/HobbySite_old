@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>消去する記事を選択</h2>
-    <form action="finish.php">
+    <form action="menyu/finish.php">
     <section class="articles">
     <?php
     try{
