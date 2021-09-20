@@ -18,15 +18,24 @@
 
         //記事の消去
         if ($_REQUEST['checked_content_id']!=NULL) {
+            if (isset($_REQUEST['delete'])) {
+                $checked=$_REQUEST['checked_content_id'];
 
-            $checked=$_REQUEST['checked_content_id'];
-
-            foreach($checked as $row) {
-                $sql = $pdo->prepare("DELETE FROM content WHERE id=?");
-                $sql->execute([$row]);
+                foreach($checked as $row) {
+                    $sql = $pdo->prepare("DELETE FROM content WHERE id=?");
+                    $sql->execute([$row]);
+                }
+                echo "<p>消去しました</p>";
+                echo "<a href='../home.php'>ホームへ</a>";
+            } else if (isset($_REQUEST['edit'])) {
+                $checked=$_REQUEST['checked_content_id'];
+                if (isset($checked[1])) {
+                    header("Location: ../home.php?edit_error=1");
+                    return;
+                }
+                header("Location: ../home.php?edit_content_id=$checked[0]");
             }
-            echo "<p>消去しました</p>";
-            echo "<a href='../home.php'>ホームへ</a>";
+            return;
         }
 
         //アカウントの消去
@@ -35,12 +44,16 @@
             $sql->execute([$_REQUEST['login_id']]);
             echo "<p>消去しました</p>";
             echo "<a href='../login_page.php'>ログインページへ</a>";
+            return;
         }
 
         //ログアウト
-        if ($_REQUEST['login_id']==NULL && $_REQUEST['checked_content_id']==NULL) {
+        if ($_REQUEST['logout']==1) {
             header('Location: ../login_page.php');
+            return;
         }
+        
+        header("Location: ../home.php");
     ?>
     </section>
 

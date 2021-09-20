@@ -83,7 +83,6 @@
     </footer>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
     <script>
       $(function() {
         //通常読み込み時
@@ -95,6 +94,17 @@
           echo "$('#main').load('search/search.php?key_word=$_REQUEST[key_word]&tag=$_REQUEST[tag]');";
         }
         ?>
+
+        //編集時
+        <?php
+        if ($_REQUEST['edit_error']==1) {
+          echo "alert('複数を編集することはできません')";
+        }
+        if (isset($_REQUEST['edit_content_id'])) {
+          echo "$('#main').load('post_page.php?edit_content_id=$_REQUEST[edit_content_id]');";
+        }
+        ?>
+        
         //クリック時
         $('#home').click(function() {
           $('#main').load('all_content_page.php');

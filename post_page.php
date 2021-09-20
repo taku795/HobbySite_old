@@ -17,7 +17,7 @@
     <h2>趣味に関することを自由に書いてみよう</h2>
     <form class="post_form" action='post/post.php' method='post'>
         <div class="title_form">
-            <p>タイトル</p><input type='text' name='title' placeholder="タイトルを入力">
+        <p>タイトル</p><input type='text' name='title' id='title' placeholder="タイトルを入力">
         </div>
         <div class="content_form">
             <p>投稿内容</p>
@@ -30,7 +30,7 @@
             </div>
             <div class="tag">
                 タグをつける：
-                <select name="tag">
+                <select name="tag" id="tag">
                 <option value="">-</option>
                 <?php
                 //tag_masterからタグIDとnameを順番に
@@ -42,12 +42,52 @@
                 <br>
             </div>
             <textarea id="textarea" name="content" rows="10" placeholder="テキストを入力"></textarea>
+            <!-- 編集処理 -->
+            <?php
+            if (isset($_REQUEST['edit_content_id'])) {
+                $edit_content_id = $_REQUEST['edit_content_id'];
+                //編集の時はrequestに入れる
+                echo "<input type='hidden' name='edit_content_id' value='$edit_content_id'>";
+            }
+            ?>
     
             <input type='submit' value='投稿する'>
         </div>     
     </form>
     
     <script>
+        //編集処理
+        <?php
+        $sql=$pdo->prepare("SELECT * FROM content WHERE id=?");
+        $sql -> execute([$edit_content_id]);
+        $result = $sql->fetchAll(PDO::FETCH_BOTH);
+        $title=$result[0]['Title'];
+        $content=$result[0]['Content'];
+        //コンテンツIDからついているタグを抽出
+        $sql=$pdo->prepare("SELECT * FROM tag_to_content WHERE Content_ID=?");
+        $sql -> execute([$edit_content_id]);
+        $result = $sql->fetchAll(PDO::FETCH_BOTH);
+        $tag=$result[0]['Tag_ID'];
+        ?>
+        var content = "<?php echo $content; ?>";
+        var title = "<?php echo $title; ?>";
+        var tag = <?php
+        if(isset($tag)) {
+            echo $tag;
+        } else {
+            echo 101;
+        } ?>;
+        if (typeof content != 'undefined') {
+            document.getElementById('textarea').value = content;
+            document.getElementById('title').value = title;
+            if (tag!=101) {
+                document.getElementById('tag').options[tag].selected = true;
+            }
+        }
+    </script>
+    <script>
+        //マップ処理
+        //テキストエリアの中身を一度見てマップがないか確認
         var num=1;
         makeOption();
         function makeOption() {

@@ -2,8 +2,7 @@
 <html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/content_delete.css">
-    <title>記事消去</title>
+    <link rel="stylesheet" href="css/content_delete.css">
 </head>
 <body>
     <h2>消去する記事を選択</h2>
@@ -49,7 +48,10 @@
         ";
     }
     ?>
-    <input class='submit-button' type="submit" value="消去">
+    <div class="button">
+        <input class='submit-button' name="delete" type="submit" value="消去">
+        <input type="submit" name="edit" value="編集">
+    </div>
     </form>
     </section>
 </body>

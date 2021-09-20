@@ -71,8 +71,8 @@
         <input type='submit' value='変更'></p>
         </form>
         <p>Googleのメールアドレスを設定するとログインがスムーズになります</p>
-        <button id="content_delete">記事を選択して消去する</button>
-        <p><a href="menyu/finish.php">ログアウトする</a></p>
+        <button id="content_delete">記事を編集する</button>
+        <p><a href="menyu/finish.php?logout=1">ログアウトする</a></p>
         <?php
         //もしテストユーザーじゃなければアカウント消去できる
         if ($_SESSION['login_id']!='test') {

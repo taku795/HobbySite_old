@@ -13,7 +13,10 @@
 .checkbox-hidden {
     display: none;
 }
-.submit-button {
-    display: block;
-    margin: auto;
+.button {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.button input {
+    margin: 5px;
 }
