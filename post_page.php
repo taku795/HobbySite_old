@@ -127,7 +127,7 @@
         function deleteMap() {
             var text=document.getElementById('textarea').value;
             var mapnum = document.getElementById('mapnum').value;
-            var patern = new RegExp("＼＼＼マップ"+mapnum+":(.+)＼＼＼",'g');
+            var patern = new RegExp("＼＼＼マップ"+mapnum+":(.*)＼＼＼",'g');
 
             if (text.match(patern)) {
             text=text.replace(patern,"");
@@ -137,9 +137,9 @@
             } else {        
                 var buf;
                 for (buf=mapnum;buf<=num;buf++) {
-                var patern2 = new RegExp("＼＼＼マップ"+buf+":(.+)＼＼＼");
+                var patern2 = new RegExp("＼＼＼マップ"+buf);
                 var buf_buf=buf-1;
-                var after = "＼＼＼マップ" +buf_buf+":(.+)＼＼＼";
+                var after = "＼＼＼マップ"+buf_buf;
                 text=text.replace(patern2,after);
                 document.getElementById('textarea').value=text;
                 }
