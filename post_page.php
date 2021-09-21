@@ -137,9 +137,9 @@
             } else {        
                 var buf;
                 for (buf=mapnum;buf<=num;buf++) {
-                var patern2 = new RegExp("＼＼＼マップ"+buf);
+                var patern2 = new RegExp("＼＼＼マップ"+buf+":(.+)＼＼＼");
                 var buf_buf=buf-1;
-                var after = "＼＼＼マップ" +buf_buf;
+                var after = "＼＼＼マップ" +buf_buf+":(.+)＼＼＼";
                 text=text.replace(patern2,after);
                 document.getElementById('textarea').value=text;
                 }
@@ -151,7 +151,7 @@
 
         function makeMap() {
             var area = document.getElementById('textarea');
-            var text = '＼＼＼マップ'+ num +':場所を入力＼＼＼';
+            var text = '＼＼＼マップ'+ num +':場所を入力＼＼＼'+'\n';
             //カーソルの位置を基準に前後を分割して、その間に文字列を挿入
             area.value = area.value.substr(0, area.selectionStart)
                 + text
