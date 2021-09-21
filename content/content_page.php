@@ -93,7 +93,7 @@
 
     <!-- 記事内容 -->
     <?php
-    $patern = '/＼{3}マップ([1-9]):([ぁ-んァ-ヶー一-龠]+)＼{3}/u';
+    $patern = '/＼{3}マップ([1-9]):(.+)＼{3}/u';
     if (preg_match($patern,$content)) {
         $content=preg_replace($patern,"<div id='map$1_area' class='map'></div><p id='map$1_place' class='map_place'>$2</p>",$content);
     }
