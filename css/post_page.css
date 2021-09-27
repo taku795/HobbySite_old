@@ -15,3 +15,24 @@ textarea {
 .title_form input {
     width: 60%;
 }
+.tag {
+    margin: 10px;
+}
+#map {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+#map_area {
+    width: 90%;
+    height: 100px;
+}
+#map_address,#map_place_name {
+    width: 300px;
+}
+.address,.place_name,.map_number,.search_field,.input_field,#map_area,.search_form,.search_result {
+    margin: 10px;
+}
+.map_number {
+    display: inline-block;
+}
+
