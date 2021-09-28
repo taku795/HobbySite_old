@@ -15,7 +15,7 @@ if (empty($_REQUEST['content'])) {
     $no_content=1;
 }
 if ($no_content || $no_title) {
-    header("Location:post_page.php?no_title=$no_title&no_content=$no_content");
+    header("Location:../home.php?no_title=$no_title&no_content=$no_content");
     return;
 }
 
