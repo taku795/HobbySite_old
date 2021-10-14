@@ -80,6 +80,7 @@
             ?>
     
             <input type='submit' value='投稿する'>
+            <input type="submit" value='記事を確認する' formaction="post/checkContent.php" formtarget="blank">
         </div>     
     </form>
     
