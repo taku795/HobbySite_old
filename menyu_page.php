@@ -76,7 +76,7 @@
         <?php
         //もしテストユーザーじゃなければアカウント消去できる
         if ($_SESSION['login_id']!='testuser') {
-            echo "<p><a href='account_delete.php'>アカウントを消去する</a></p>";
+            echo "<p><a href='menyu/account_delete.php'>アカウントを消去する</a></p>";
         }
         ?>
     </section>
