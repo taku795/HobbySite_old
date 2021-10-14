@@ -21,11 +21,12 @@ try{
   print('DB接続エラー:'.$e->getMessage());
 }
 
-//テストユーザーのアカウント、投稿内容を消去
-$pdo->query("DELETE FROM content WHERE Login_ID='test'");
-$pdo->query("DELETE FROM users WHERE Login_ID='test'");
-//再度テストユーザーを追加
-$pdo->query("INSERT INTO users VALUES('test','test',default,default)");
+//NULLの入る可能性のあるところで消去を実行する
+$pdo->query("DELETE FROM tag_to_content WHERE Content_ID IS null");
+$pdo->query("DELETE FROM comment_to_content WHERE Content_ID IS null OR Login_ID IS null");
+$pdo->query("DELETE FROM content WHERE Login_ID IS null");
+$pdo->query("DELETE FROM follow WHERE Follow_ID IS null OR Follower_ID IS null");
+$pdo->query("DELETE FROM good WHERE Content_ID IS null OR Login_ID IS null");
 ?>
 
 <section class="loginform">
@@ -51,11 +52,6 @@ $pdo->query("INSERT INTO users VALUES('test','test',default,default)");
   </form>
 
   <div class="new_test_login">
-    <form action="login/login.php" method="psot">
-      <input type="hidden" name="Login_ID" value="test">
-      <input type="hidden" name="Login_Password" value="test">
-      <input class="test_button" type="submit" value="テストユーザーとしてログイン*">
-    </form>
     <div class="new_set">
       <a href="login/new_page.php">新規登録</a>
     </div>
@@ -67,18 +63,15 @@ $pdo->query("INSERT INTO users VALUES('test','test',default,default)");
     <div class="g-signin2" data-onsuccess="onSignIn" onclick="onClick()"></div>
   </div>
 </section>
-<div class="memo">
-  <p>*テストユーザーとして新規登録をせずにログインすることができます</p>
-</div>
-
 
 <!-- ログインボタンが押されて、ログインに成功したら画面遷移 -->
 <script>
   var clicked=false;
-  function onClick()
-  {
+
+  function onClick() {
     clicked=true;
   }
+  
   function onSignIn(googleUser) {
       if (clicked) {
         var profile = googleUser.getBasicProfile();
