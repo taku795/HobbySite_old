@@ -75,7 +75,7 @@
         <p><a href="menyu/finish.php?logout=1">ログアウトする</a></p>
         <?php
         //もしテストユーザーじゃなければアカウント消去できる
-        if ($_SESSION['login_id']!='test') {
+        if ($_SESSION['login_id']!='testuser') {
             echo "<p><a href='account_delete.php'>アカウントを消去する</a></p>";
         }
         ?>
