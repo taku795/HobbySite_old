@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/content_page.css">
-    <title>記事ページ</title>
+    <title>プレビュー</title>
 </head>
 <body>
     <?php
@@ -137,6 +137,12 @@
             ";
             }
             ?>              
+    }
+</script>
+
+<script>
+    function closeWindow() {
+        window.close();
     }
 </script>
 
