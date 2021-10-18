@@ -15,74 +15,76 @@
     session_start();
     ?>
     <h2>趣味に関することを自由に書いてみよう</h2>
-    <form class="post_form" action='post/post.php' method='post'>
-        <div class="title_form">
-            <p>タイトル</p><input type='text' name='title' id='title' placeholder="タイトルを入力">
-        </div>
-        <div class="content_form">
-            <p>投稿内容</p>
-            <button onclick="mapAdd()" id="map_add" type='button'>マップ</button>
-            <div id="map">
-                <div class="input_field">
-                    <div class="map_number">
-                        マップ番号　<select id="map_num"></select>
-                    </div>
-                    <button id="map_delete" onclick="mapDelete()" type='button'>消去</button>
-                    <div class="form">
-                        <div>
-                            <div class="address">
-                                住所　：<input type="text" id="map_address" placeholder="住所(必須) を入力してください">
-                            </div>
-                            <div class="place_name">
-                                場所名：<input type="text" id="map_place_name" placeholder="場所名(任意)を入力してください">
-                            </div>
-                        </div>
-                        
-                        <button id="addORedit" onclick="addressInText()" type='button'>追加</button>
-                        
-                    </div>
-                </div>
-                
-                <div class="search_field">
-                    <p>住所がわからない際はこちらから検索できます</p>
-                    <div class="search_form">
-                        <input type="text" id="text" placeholder="キーワードを入力">
-                        <button onclick="search()" type='button'>検索</button>
-                    </div>
-                    <div class="search_result">
-                        検索結果：
-                        <select name="" id="map_result"></select>
-                        <button onclick="useResult()" type='button'>この結果を使用</button>
-                    </div>
-                    <div id="map_area"></div>
-                </div>
+    <section class="form_group">
+        <form class="post_form" action='post/post.php' method='post'>
+            <div class="title_form">
+                <p>タイトル</p><input type='text' name='title' id='title' placeholder="タイトルを入力">
             </div>
-            <div class="tag">
-                タグをつける：
-                <select name="tag" id="tag">
-                <option value="">-</option>
+            <div class="content_form">
+                <p>投稿内容</p>
+                <button onclick="mapAdd()" id="map_add" type='button'>マップ</button>
+                <div id="map">
+                    <div class="input_field">
+                        <div class="map_number">
+                            マップ番号　<select id="map_num"></select>
+                        </div>
+                        <button id="map_delete" onclick="mapDelete()" type='button'>消去</button>
+                        <div class="form">
+                            <div>
+                                <div class="address">
+                                    住所　：<input type="text" id="map_address" placeholder="住所(必須) を入力してください">
+                                </div>
+                                <div class="place_name">
+                                    場所名：<input type="text" id="map_place_name" placeholder="場所名(任意)を入力してください">
+                                </div>
+                            </div>
+                            
+                            <button id="addORedit" onclick="addressInText()" type='button'>追加</button>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="search_field">
+                        <p>住所がわからない際はこちらから検索できます</p>
+                        <div class="search_form">
+                            <input type="text" id="text" placeholder="キーワードを入力">
+                            <button onclick="search()" type='button'>検索</button>
+                        </div>
+                        <div class="search_result">
+                            検索結果：
+                            <select name="" id="map_result"></select>
+                            <button onclick="useResult()" type='button'>この結果を使用</button>
+                        </div>
+                        <div id="map_area"></div>
+                    </div>
+                </div>
+                <div class="tag">
+                    タグをつける：
+                    <select name="tag" id="tag">
+                    <option value="">-</option>
+                    <?php
+                    //tag_masterからタグIDとnameを順番に
+                    foreach($sql=$pdo->query('select * from tag_master') as $row ) {
+                        echo "<option value=$row[Tag_ID]>$row[Tag_Name]</option>";
+                    }
+                    ?>
+                    </select>
+                </div>
+                <textarea id="textarea" name="content" rows="10" placeholder="テキストを入力"></textarea>
+                <!-- 編集処理 -->
                 <?php
-                //tag_masterからタグIDとnameを順番に
-                foreach($sql=$pdo->query('select * from tag_master') as $row ) {
-                    echo "<option value=$row[Tag_ID]>$row[Tag_Name]</option>";
+                if (isset($_REQUEST['edit_content_id'])) {
+                    $edit_content_id = $_REQUEST['edit_content_id'];
+                    //編集の時はrequestに入れる
+                    echo "<input type='hidden' name='edit_content_id' value='$edit_content_id'>";
                 }
                 ?>
-                </select>
-            </div>
-            <textarea id="textarea" name="content" rows="10" placeholder="テキストを入力"></textarea>
-            <!-- 編集処理 -->
-            <?php
-            if (isset($_REQUEST['edit_content_id'])) {
-                $edit_content_id = $_REQUEST['edit_content_id'];
-                //編集の時はrequestに入れる
-                echo "<input type='hidden' name='edit_content_id' value='$edit_content_id'>";
-            }
-            ?>
-    
-            <input type='submit' value='投稿する'>
-            <input type="submit" value='記事を確認する' formaction="post/checkContent.php" formtarget="blank">
-        </div>     
-    </form>
+        
+                <input type='submit' value='投稿する' formaction="post/post.php">
+                <input type="submit" value='プレビューを表示' formaction="post/checkContent.php" formtarget="blank">
+            </div>     
+        </form>
+    </section>
     
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBpyyrVRBNkYFhModUxYGrgeJLAsmwW6Uo" ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

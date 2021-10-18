@@ -82,7 +82,15 @@
         
     </div>
     </section>
-
+    <div style="
+        position: fixed;
+        right: 20px;
+        top: 30px;
+        transform: translateX(-50%)
+                translateY(-50%);
+        ">
+        <button onclick="closeWindow()">プレビューを閉じる</button>
+    </div>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBpyyrVRBNkYFhModUxYGrgeJLAsmwW6Uo" ></script>
