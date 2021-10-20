@@ -51,10 +51,8 @@ $pdo->query("DELETE FROM good WHERE Content_ID IS null OR Login_ID IS null");
     <input class="nomal_button" type='submit' value='ログイン'>
   </form>
 
-  <div class="new_test_login">
-    <div class="new_set">
-      <a href="login/new_page.php">新規登録</a>
-    </div>
+  <div class="new_set">
+    <a href="login/new_page.php">新規登録</a>
   </div>
 
   <!-- Googleログインボタン -->
