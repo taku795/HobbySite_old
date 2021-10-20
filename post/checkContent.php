@@ -54,11 +54,11 @@
     <?php
     $patern = '/＼{3}マップ([1-9]):.*? 住所:(.*?)＼{3}/u';
     if (preg_match($patern,$content)) {
-        $content=preg_replace($patern,"<div id='map$1_area' class='map'></div><p id='map$1_address' class='map_place'>$2</p>",$content);
+        $content=preg_replace($patern,"<div id='map$1_area' class='map'></div><p id='map$1_address' class='map_place'>$2</p><p>",$content);
     }
     echo "
     <div class='content'>
-    <p>$content</p>
+    <p>$content
     </div>
     ";
     ?>
