@@ -20,7 +20,10 @@
     $day=date("Y-m-d");
     $title=$_REQUEST['title'];
     $content=$_REQUEST['content'];
-    $tag=$_REQUEST['tag'];
+    $sql=$pdo->prepare('SELECT * from tag_master WHERE Tag_ID=?');
+    $sql->execute([$_REQUEST['tag']]);
+    $result = $sql->fetchAll(PDO::FETCH_BOTH);
+    $tag=$result[0]['Tag_Name'];
 
     
     echo "
